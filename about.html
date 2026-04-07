@@ -6,7 +6,7 @@
   <title>About Remedon | Climate Intelligence & Circular Markets</title>
   <meta
     name="description"
-    content="Learn about Remedon, our climate work, leadership placeholders, milestone timeline, and circular systems approach."
+    content="Learn about Remedon, our climate work, leadership, associations, and circular systems approach."
   >
   <style>
     :root {
@@ -401,35 +401,47 @@
     }
 
     .windmill-blades {
-      transform-origin: 260px 208px;
+      transform-box: fill-box;
+      transform-origin: center;
       animation: spin 5s linear infinite;
     }
 
-    .recycle-ring {
-      transform-origin: 320px 220px;
-      animation: spin 10s linear infinite;
+    .plastic-rotation {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: spin 9s linear infinite;
     }
 
-    .crop-leaf {
+    .crop-unit {
+      transform-box: fill-box;
       transform-origin: center bottom;
-      animation: grow 2.8s ease-in-out infinite alternate;
+      animation: crop-rise 3.4s ease-in-out infinite alternate;
     }
 
-    .crop-leaf.delay-1 {
-      animation-delay: 0.4s;
+    .crop-unit.delay-1 {
+      animation-delay: 0.55s;
     }
 
-    .crop-leaf.delay-2 {
-      animation-delay: 0.8s;
+    .crop-unit.delay-2 {
+      animation-delay: 1.1s;
     }
 
-    .tree-canopy {
+    .forest-tree {
+      transform-box: fill-box;
       transform-origin: center bottom;
-      animation: sway 3.4s ease-in-out infinite alternate;
+      animation: forest-grow 3.8s ease-in-out infinite alternate;
     }
 
-    .tree-canopy.delay-1 {
-      animation-delay: 0.6s;
+    .forest-tree.delay-1 {
+      animation-delay: 0.55s;
+    }
+
+    .forest-tree.delay-2 {
+      animation-delay: 1.1s;
+    }
+
+    .forest-tree.delay-3 {
+      animation-delay: 1.65s;
     }
 
     .sun-glow {
@@ -564,116 +576,6 @@
       font-size: 0.96rem;
     }
 
-    .timeline-wrap {
-      background: linear-gradient(180deg, rgba(238, 251, 242, 0.72), rgba(255, 255, 255, 1));
-    }
-
-    .timeline-shell {
-      display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      gap: 34px;
-      align-items: start;
-    }
-
-    .timeline-years {
-      position: sticky;
-      top: 120px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .year-chip {
-      width: 100%;
-      text-align: left;
-      border: 1px solid rgba(21, 81, 127, 0.12);
-      background: #fff;
-      color: var(--text-700);
-      padding: 14px 18px;
-      border-radius: 16px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(15, 58, 99, 0.06);
-      transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
-    }
-
-    .year-chip.active,
-    .year-chip:hover,
-    .year-chip:focus-visible {
-      transform: translateX(4px);
-      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
-      color: #fff;
-      border-color: transparent;
-    }
-
-    .timeline-panel {
-      position: relative;
-      padding-left: 74px;
-      min-height: 560px;
-    }
-
-    .timeline-panel::before {
-      content: "";
-      position: absolute;
-      left: 24px;
-      top: 12px;
-      bottom: 12px;
-      width: 4px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(27, 109, 158, 0.35), rgba(92, 194, 61, 0.48));
-    }
-
-    .timeline-card {
-      position: relative;
-      display: none;
-      min-height: 150px;
-      padding: 24px 28px;
-      margin-bottom: 36px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(20, 71, 109, 0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .timeline-card.active {
-      display: block;
-    }
-
-    .timeline-card::before {
-      content: "";
-      position: absolute;
-      left: -64px;
-      top: 34px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
-      box-shadow: 0 0 0 6px rgba(92, 194, 61, 0.12);
-    }
-
-    .timeline-card h3 {
-      margin: 0 0 20px;
-      font-size: 2rem;
-      color: var(--blue-900);
-      letter-spacing: -0.05em;
-    }
-
-    .timeline-placeholder {
-      min-height: 76px;
-      border-radius: 18px;
-      border: 1.5px dashed rgba(21, 81, 127, 0.16);
-      background: linear-gradient(180deg, rgba(232, 245, 251, 0.6), rgba(255, 255, 255, 0.7));
-    }
-
-    .timeline-scene {
-      margin-top: 34px;
-      padding: 24px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(15, 58, 99, 0.06), rgba(92, 194, 61, 0.06));
-      border: 1px solid rgba(20, 71, 109, 0.08);
-    }
-
     .assoc-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -750,14 +652,14 @@
       to { transform: rotate(360deg); }
     }
 
-    @keyframes grow {
-      from { transform: scaleY(0.82); }
-      to { transform: scaleY(1.08); }
+    @keyframes crop-rise {
+      from { transform: scaleY(0.58) translateY(18px); }
+      to { transform: scaleY(1) translateY(0); }
     }
 
-    @keyframes sway {
-      from { transform: rotate(-2deg) scale(0.98); }
-      to { transform: rotate(3deg) scale(1.02); }
+    @keyframes forest-grow {
+      from { transform: scale(0.68); }
+      to { transform: scale(1); }
     }
 
     @keyframes pulse {
@@ -771,9 +673,9 @@
       }
 
       .windmill-blades,
-      .recycle-ring,
-      .crop-leaf,
-      .tree-canopy,
+      .plastic-rotation,
+      .crop-unit,
+      .forest-tree,
       .sun-glow {
         animation: none;
       }
@@ -782,7 +684,6 @@
     @media (max-width: 1100px) {
       .hero-grid,
       .overview-grid,
-      .timeline-shell,
       .office-grid {
         grid-template-columns: 1fr;
       }
@@ -794,10 +695,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .timeline-years {
-        position: static;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 760px) {
@@ -832,8 +729,7 @@
       .mission-grid,
       .why-grid,
       .people-grid,
-      .assoc-grid,
-      .timeline-years {
+      .assoc-grid {
         grid-template-columns: 1fr;
       }
 
@@ -847,19 +743,6 @@
 
       .section {
         padding: 58px 0;
-      }
-
-      .timeline-panel {
-        padding-left: 58px;
-        min-height: auto;
-      }
-
-      .timeline-panel::before {
-        left: 18px;
-      }
-
-      .timeline-card::before {
-        left: -48px;
       }
 
       .brand img {
@@ -914,9 +797,9 @@
             <strong>Board</strong>
             <span>Board section is ready to expand from the same leadership area.</span>
           </a>
-          <a class="about-card" href="#timeline">
+          <a class="about-card" href="#associations">
             <strong>FAQs</strong>
-            <span>Prepared as a future content-ready section via the interactive timeline.</span>
+            <span>Reserved space for company information and additional public-facing details.</span>
           </a>
           <a class="about-card" href="#office">
             <strong>Careers</strong>
@@ -943,7 +826,7 @@
             and practical systems that help organizations move from intent to credible environmental execution.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#timeline">Explore Journey</a>
+            <a class="btn btn-primary" href="#associations">Explore More</a>
             <a class="btn btn-secondary" href="#office">India Office</a>
           </div>
         </div>
@@ -953,56 +836,75 @@
             <circle class="sun-glow" cx="385" cy="88" r="42" fill="rgba(164, 239, 106, 0.25)"/>
             <circle cx="385" cy="88" r="26" fill="#c8f57f"/>
 
-            <g transform="translate(144 134)">
-              <rect x="110" y="84" width="10" height="184" rx="5" fill="#d9edf7"/>
+            <g transform="translate(74 116)">
+              <path d="M96 272 H206" stroke="rgba(217,237,247,0.9)" stroke-width="4" stroke-linecap="round"/>
+              <rect x="146" y="118" width="8" height="154" rx="4" fill="#d9edf7"/>
               <g class="windmill-blades">
-                <circle cx="115" cy="76" r="10" fill="#f6fbff"/>
-                <path d="M115 14 C131 40 138 57 124 77 L115 76 Z" fill="#f6fbff"/>
-                <path d="M173 110 C142 108 126 98 116 82 L115 76 Z" fill="#f6fbff"/>
-                <path d="M72 118 C87 91 99 81 115 76 L116 82 Z" fill="#f6fbff"/>
+                <circle cx="150" cy="114" r="8" fill="#f6fbff"/>
+                <path d="M150 54 C166 82 171 98 158 116 L150 114 Z" fill="#f6fbff"/>
+                <path d="M202 144 C173 143 159 135 151 121 L150 114 Z" fill="#f6fbff"/>
+                <path d="M104 148 C119 124 129 118 150 114 L151 121 Z" fill="#f6fbff"/>
               </g>
             </g>
 
-            <g transform="translate(266 262)">
-              <circle class="recycle-ring" cx="54" cy="-42" r="42" fill="none" stroke="#8ee05b" stroke-width="10" stroke-dasharray="56 18"/>
-              <path d="M56 -91 L76 -76 L52 -68 Z" fill="#8ee05b"/>
-              <path d="M98 -24 L72 -14 L77 -40 Z" fill="#8ee05b"/>
-              <path d="M13 -29 L34 -44 L39 -17 Z" fill="#8ee05b"/>
-              <rect x="36" y="8" width="38" height="84" rx="16" fill="#dff1f8" stroke="#9acde6"/>
-              <path d="M40 42 H70" stroke="#86c65a" stroke-width="6" stroke-linecap="round"/>
-              <path d="M40 60 H70" stroke="#86c65a" stroke-width="6" stroke-linecap="round"/>
-              <path d="M40 78 H70" stroke="#86c65a" stroke-width="6" stroke-linecap="round"/>
+            <g transform="translate(332 154)">
+              <g class="plastic-rotation">
+                <circle cx="44" cy="72" r="38" fill="none" stroke="rgba(164,239,106,0.9)" stroke-width="8" stroke-dasharray="42 18"/>
+                <path d="M44 28 L58 38 L42 44 Z" fill="#a4ef6a"/>
+                <path d="M82 72 L68 84 L66 64 Z" fill="#a4ef6a"/>
+                <path d="M14 86 L26 72 L30 90 Z" fill="#a4ef6a"/>
+              </g>
+              <rect x="27" y="44" width="34" height="72" rx="14" fill="#dff1f8" stroke="#9acde6"/>
+              <rect x="35" y="30" width="18" height="16" rx="7" fill="#dff1f8" stroke="#9acde6"/>
+              <path d="M33 66 H55" stroke="#86c65a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M33 82 H55" stroke="#86c65a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M33 98 H55" stroke="#86c65a" stroke-width="5" stroke-linecap="round"/>
             </g>
 
-            <g transform="translate(298 210)">
-              <rect x="108" y="112" width="8" height="88" rx="4" fill="#d4ebf6"/>
-              <rect x="152" y="124" width="8" height="76" rx="4" fill="#d4ebf6"/>
-              <path d="M68 200 H196" stroke="#d4ebf6" stroke-width="4" stroke-linecap="round"/>
-              <g class="tree-canopy">
-                <circle cx="113" cy="98" r="26" fill="#b1ef6f"/>
-                <circle cx="101" cy="108" r="16" fill="#9cdf61"/>
-                <circle cx="124" cy="109" r="15" fill="#dff7a4"/>
+            <g transform="translate(286 222)">
+              <path d="M102 182 H236" stroke="#d4ebf6" stroke-width="4" stroke-linecap="round"/>
+              <g class="forest-tree">
+                <rect x="114" y="120" width="7" height="62" rx="4" fill="#d4ebf6"/>
+                <circle cx="118" cy="104" r="20" fill="#96e05b"/>
+                <circle cx="105" cy="113" r="12" fill="#7fd34d"/>
+                <circle cx="130" cy="114" r="12" fill="#d8f7a1"/>
               </g>
-              <g class="tree-canopy delay-1">
-                <circle cx="157" cy="112" r="22" fill="#b1ef6f"/>
-                <circle cx="147" cy="120" r="12" fill="#9cdf61"/>
-                <circle cx="166" cy="121" r="13" fill="#dff7a4"/>
+              <g class="forest-tree delay-1">
+                <rect x="148" y="104" width="8" height="78" rx="4" fill="#d4ebf6"/>
+                <circle cx="152" cy="84" r="25" fill="#a6e96b"/>
+                <circle cx="136" cy="94" r="15" fill="#83d94f"/>
+                <circle cx="168" cy="95" r="15" fill="#d8f7a1"/>
+              </g>
+              <g class="forest-tree delay-2">
+                <rect x="184" y="124" width="7" height="58" rx="4" fill="#d4ebf6"/>
+                <circle cx="188" cy="108" r="18" fill="#96e05b"/>
+                <circle cx="176" cy="116" r="11" fill="#7fd34d"/>
+                <circle cx="199" cy="117" r="11" fill="#d8f7a1"/>
+              </g>
+              <g class="forest-tree delay-3">
+                <rect x="214" y="132" width="6" height="50" rx="4" fill="#d4ebf6"/>
+                <circle cx="217" cy="118" r="15" fill="#a6e96b"/>
+                <circle cx="208" cy="124" r="9" fill="#83d94f"/>
+                <circle cx="226" cy="125" r="9" fill="#d8f7a1"/>
               </g>
             </g>
 
-            <g transform="translate(118 318)">
-              <path d="M-18 96 C22 24 114 24 164 96" fill="none" stroke="rgba(164,239,106,0.14)" stroke-width="12" stroke-linecap="round"/>
-              <g class="crop-leaf">
-                <rect x="22" y="0" width="6" height="96" rx="3" fill="#d6eef8"/>
-                <path d="M24 52 C-10 32 -6 2 24 0 Z" fill="#98e060"/>
+            <g transform="translate(92 304)">
+              <path d="M18 108 H216" stroke="rgba(214,238,248,0.84)" stroke-width="4" stroke-linecap="round"/>
+              <g class="crop-unit">
+                <rect x="40" y="18" width="6" height="90" rx="3" fill="#d6eef8"/>
+                <path d="M43 66 C18 48 20 24 43 18 Z" fill="#98e060"/>
+                <path d="M43 56 C66 42 64 18 43 18 Z" fill="#7ed34e"/>
               </g>
-              <g class="crop-leaf delay-1">
-                <rect x="72" y="10" width="6" height="86" rx="3" fill="#d6eef8"/>
-                <path d="M74 46 C46 22 49 -4 74 10 Z" fill="#7ed34e"/>
+              <g class="crop-unit delay-1">
+                <rect x="112" y="-4" width="6" height="112" rx="3" fill="#d6eef8"/>
+                <path d="M115 60 C86 36 90 8 115 -4 Z" fill="#a5ef69"/>
+                <path d="M115 48 C140 28 138 2 115 -4 Z" fill="#79ca54"/>
               </g>
-              <g class="crop-leaf delay-2">
-                <rect x="120" y="-2" width="6" height="98" rx="3" fill="#d6eef8"/>
-                <path d="M122 54 C156 26 154 -4 122 -2 Z" fill="#a5ef69"/>
+              <g class="crop-unit delay-2">
+                <rect x="184" y="10" width="6" height="98" rx="3" fill="#d6eef8"/>
+                <path d="M187 64 C160 42 163 16 187 10 Z" fill="#8dd84c"/>
+                <path d="M187 52 C212 34 210 10 187 10 Z" fill="#5cc23d"/>
               </g>
             </g>
 
@@ -1132,92 +1034,6 @@
       </div>
     </section>
 
-    <section class="section timeline-wrap" id="timeline">
-      <div class="shell">
-        <div class="section-intro">
-          <h2>Started</h2>
-        </div>
-        <div class="timeline-shell">
-          <div class="timeline-years" aria-label="Year selector">
-            <button class="year-chip active" type="button" data-year="2022">2022</button>
-            <button class="year-chip" type="button" data-year="2023">2023</button>
-            <button class="year-chip" type="button" data-year="2024">2024</button>
-            <button class="year-chip" type="button" data-year="2025">2025</button>
-            <button class="year-chip" type="button" data-year="2026">2026</button>
-          </div>
-
-          <div>
-            <div class="timeline-panel">
-              <article class="timeline-card active" data-year-panel="2022">
-                <h3>2022</h3>
-                <div class="timeline-placeholder"></div>
-              </article>
-              <article class="timeline-card" data-year-panel="2023">
-                <h3>2023</h3>
-                <div class="timeline-placeholder"></div>
-              </article>
-              <article class="timeline-card" data-year-panel="2024">
-                <h3>2024</h3>
-                <div class="timeline-placeholder"></div>
-              </article>
-              <article class="timeline-card" data-year-panel="2025">
-                <h3>2025</h3>
-                <div class="timeline-placeholder"></div>
-              </article>
-              <article class="timeline-card" data-year-panel="2026">
-                <h3>2026</h3>
-                <div class="timeline-placeholder"></div>
-              </article>
-            </div>
-
-            <div class="timeline-scene" aria-hidden="true">
-              <svg viewBox="0 0 760 220" role="presentation">
-                <circle cx="94" cy="52" r="24" fill="rgba(92,194,61,0.16)"/>
-                <g transform="translate(62 66)">
-                  <rect x="34" y="14" width="8" height="90" rx="4" fill="#d7ebf5"/>
-                  <g class="windmill-blades" style="transform-origin:38px 12px;">
-                    <circle cx="38" cy="12" r="6" fill="#0f3a63"/>
-                    <path d="M38 -22 C48 -8 52 1 44 13 L38 12 Z" fill="#1b6d9e"/>
-                    <path d="M72 32 C54 31 45 25 38 16 L38 12 Z" fill="#3da832"/>
-                    <path d="M12 38 C20 22 26 17 38 12 L38 16 Z" fill="#88d544"/>
-                  </g>
-                </g>
-                <g transform="translate(290 150)">
-                  <g class="crop-leaf">
-                    <rect x="0" y="-52" width="5" height="54" rx="3" fill="#1b6d9e"/>
-                    <path d="M2 -22 C-18 -44 -16 -60 2 -52 Z" fill="#5cc23d"/>
-                  </g>
-                  <g class="crop-leaf delay-1" transform="translate(28 0)">
-                    <rect x="0" y="-64" width="5" height="66" rx="3" fill="#1b6d9e"/>
-                    <path d="M2 -30 C24 -52 18 -70 2 -64 Z" fill="#88d544"/>
-                  </g>
-                  <g class="crop-leaf delay-2" transform="translate(56 0)">
-                    <rect x="0" y="-58" width="5" height="60" rx="3" fill="#1b6d9e"/>
-                    <path d="M2 -26 C-16 -46 -14 -64 2 -58 Z" fill="#5cc23d"/>
-                  </g>
-                </g>
-                <g transform="translate(514 116)">
-                  <g class="tree-canopy">
-                    <rect x="38" y="8" width="8" height="54" rx="4" fill="#1b6d9e"/>
-                    <circle cx="42" cy="0" r="24" fill="#95e05a"/>
-                    <circle cx="26" cy="10" r="14" fill="#79ca54"/>
-                    <circle cx="58" cy="10" r="15" fill="#b6ef7b"/>
-                  </g>
-                </g>
-                <g transform="translate(660 94)">
-                  <circle class="recycle-ring" cx="26" cy="26" r="22" fill="none" stroke="#5cc23d" stroke-width="8" stroke-dasharray="30 12"/>
-                  <path d="M26 0 L36 8 L24 12 Z" fill="#5cc23d"/>
-                  <path d="M48 26 L39 35 L37 22 Z" fill="#5cc23d"/>
-                  <path d="M10 40 L18 30 L22 43 Z" fill="#5cc23d"/>
-                </g>
-                <path d="M18 182 H742" stroke="rgba(21,81,127,0.14)" stroke-width="4" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="associations">
       <div class="shell">
         <div class="section-intro">
@@ -1293,27 +1109,7 @@
       });
     }
 
-    const yearButtons = Array.from(document.querySelectorAll(".year-chip"));
-    const yearPanels = Array.from(document.querySelectorAll("[data-year-panel]"));
     const params = new URLSearchParams(window.location.search);
-    const initialYear = params.get("year") || "2022";
-
-    const activateYear = (year) => {
-      yearButtons.forEach((button) => {
-        button.classList.toggle("active", button.dataset.year === year);
-      });
-
-      yearPanels.forEach((panel) => {
-        panel.classList.toggle("active", panel.dataset.yearPanel === year);
-      });
-    };
-
-    yearButtons.forEach((button) => {
-      button.addEventListener("click", () => activateYear(button.dataset.year));
-    });
-
-    activateYear(initialYear);
-
     const previewSection = params.get("section");
     if (previewSection) {
       window.addEventListener("load", () => {
