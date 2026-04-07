@@ -71,8 +71,12 @@
       box-shadow: 0 6px 20px rgba(15, 58, 99, 0.04);
     }
 
+    .topbar-inner {
+      position: relative;
+    }
+
     .nav {
-      min-height: 90px;
+      min-height: 84px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -117,7 +121,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 12px;
       color: #6a8098;
       font-size: 0.87rem;
       font-weight: 700;
@@ -125,9 +129,105 @@
       letter-spacing: 0.02em;
     }
 
+    .nav-links a,
+    .nav-trigger {
+      padding: 12px 14px;
+      border-radius: 10px;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
     .nav-links a:hover,
-    .nav-links a:focus-visible {
+    .nav-links a:focus-visible,
+    .nav-trigger:hover,
+    .nav-trigger:focus-visible,
+    .nav-trigger[aria-expanded="true"] {
       color: var(--blue-900);
+      background: rgba(20, 71, 109, 0.06);
+    }
+
+    .nav-trigger {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      text-transform: inherit;
+      letter-spacing: inherit;
+    }
+
+    .caret {
+      display: inline-block;
+      margin-left: 7px;
+      transition: transform 160ms ease;
+    }
+
+    .nav-trigger[aria-expanded="true"] .caret {
+      transform: rotate(180deg);
+    }
+
+    .topbar-cta {
+      min-width: 0;
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-size: 0.84rem;
+      box-shadow: 0 12px 24px rgba(21, 81, 127, 0.16);
+    }
+
+    .about-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      padding: 18px 0 22px;
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: 0 20px 38px rgba(15, 58, 99, 0.12);
+    }
+
+    .about-menu[hidden] {
+      display: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .about-card {
+      display: block;
+      padding: 22px 20px;
+      border-radius: 16px;
+      background: #f6f8fb;
+      border: 1px solid rgba(20, 71, 109, 0.06);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .about-card strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .about-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--text-700);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+
+    .about-card:hover,
+    .about-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(15, 58, 99, 0.08);
+      border-color: rgba(21, 81, 127, 0.14);
     }
 
     .btn {
@@ -749,15 +849,29 @@
 
       .nav {
         min-height: auto;
-        padding: 18px 0;
+        padding: 16px 0 18px;
         flex-wrap: wrap;
       }
 
       .nav-links {
         width: 100%;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 8px;
         font-size: 0.78rem;
+      }
+
+      .nav-links a,
+      .nav-trigger {
+        padding: 10px 12px;
+      }
+
+      .topbar-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
       }
 
       .brand img,
@@ -850,21 +964,63 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="shell nav">
-      <a class="brand" href="#home" aria-label="Remedon home">
-        <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
-        <span class="brand-copy">
-          <strong>Remedon</strong>
-          <span>Carbon Intelligence</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#story">Our Story</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#contact">Contact Us</a>
-      </nav>
+    <div class="topbar-inner">
+      <div class="shell nav">
+        <a class="brand" href="#home" aria-label="Remedon home">
+          <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
+          <span class="brand-copy">
+            <strong>Remedon</strong>
+            <span>Carbon Intelligence</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#story">Home</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#solutions">Solutions</a>
+          <button
+            class="nav-trigger"
+            type="button"
+            id="about-toggle"
+            aria-expanded="false"
+            aria-controls="about-menu"
+          >
+            About Us <span class="caret">^</span>
+          </button>
+        </nav>
+
+        <a class="btn btn-primary topbar-cta" href="#contact">Get In Touch</a>
+      </div>
+
+      <div class="about-menu" id="about-menu" hidden>
+        <div class="shell about-grid">
+          <a class="about-card" href="#story">
+            <strong>About Us</strong>
+            <span>See Remedon’s climate-first story and the execution lens behind the brand.</span>
+          </a>
+          <a class="about-card" href="#services">
+            <strong>Capabilities</strong>
+            <span>Review our carbon, Scope 3, and circular market service lines.</span>
+          </a>
+          <a class="about-card" href="#portfolio">
+            <strong>Portfolio</strong>
+            <span>Explore project footprints and the kinds of work we support.</span>
+          </a>
+          <a class="about-card" href="#solutions">
+            <strong>Solutions</strong>
+            <span>Understand how reporting, markets, and compliance connect together.</span>
+          </a>
+          <a class="about-card" href="#contact">
+            <strong>Contact</strong>
+            <span>Start a conversation with the team about climate or EPR execution.</span>
+          </a>
+          <a class="about-card" href="mailto:remedonpvtltd@gmail.com">
+            <strong>Email Us</strong>
+            <span>Reach us directly at remedonpvtltd@gmail.com for project discussions.</span>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -1173,7 +1329,7 @@
             </div>
             <div class="footer-copy" style="margin-top:18px;">
               <p>Carbon asset development, Scope 3 carbon footprint calculation, and Plastic EPR trading support.</p>
-              <p>Email: <a href="mailto:hello@remedon.in">hello@remedon.in</a></p>
+              <p>Email: <a href="mailto:remedonpvtltd@gmail.com">remedonpvtltd@gmail.com</a></p>
               <p>Built as a static website with a stronger blue-green identity based on your logo.</p>
             </div>
           </div>
@@ -1203,5 +1359,47 @@
       </div>
     </section>
   </main>
+  <script>
+    const aboutToggle = document.getElementById("about-toggle");
+    const aboutMenu = document.getElementById("about-menu");
+
+    if (aboutToggle && aboutMenu) {
+      const closeAboutMenu = () => {
+        aboutToggle.setAttribute("aria-expanded", "false");
+        aboutMenu.hidden = true;
+      };
+
+      const openAboutMenu = () => {
+        aboutToggle.setAttribute("aria-expanded", "true");
+        aboutMenu.hidden = false;
+      };
+
+      aboutToggle.addEventListener("click", () => {
+        const isOpen = aboutToggle.getAttribute("aria-expanded") === "true";
+        aboutToggle.setAttribute("aria-expanded", String(!isOpen));
+        aboutMenu.hidden = isOpen;
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!aboutMenu.hidden && !event.target.closest(".topbar-inner")) {
+          closeAboutMenu();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeAboutMenu();
+        }
+      });
+
+      aboutMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeAboutMenu);
+      });
+
+      if (new URLSearchParams(window.location.search).get("about") === "open") {
+        openAboutMenu();
+      }
+    }
+  </script>
 </body>
 </html>
