@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Remedon | Climate Intelligence & Circular Markets</title>
+  <meta
+    name="description"
+    content="Learn about Remedon, our climate work, leadership placeholders, milestone timeline, and circular systems approach."
+  >
+  <style>
+    :root {
+      --blue-950: #0a2b47;
+      --blue-900: #0f3a63;
+      --blue-800: #15517f;
+      --blue-700: #1b6d9e;
+      --green-700: #3da832;
+      --green-600: #5cc23d;
+      --green-500: #88d544;
+      --sea-200: #daf0dd;
+      --mint-100: #ecf8ea;
+      --sky-100: #e8f5fb;
+      --text-900: #1f3b56;
+      --text-700: #55708a;
+      --line: rgba(20, 71, 109, 0.12);
+      --surface: #ffffff;
+      --soft: #f4fafc;
+      --accent-soft: rgba(92, 194, 61, 0.12);
+      --shadow: 0 18px 50px rgba(15, 58, 99, 0.12);
+      --shell: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-900);
+      background:
+        radial-gradient(circle at top left, rgba(92, 194, 61, 0.08), transparent 24%),
+        radial-gradient(circle at top right, rgba(27, 109, 158, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, #f7fcff 52%, #ffffff 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--shell));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: 0 6px 20px rgba(15, 58, 99, 0.05);
+    }
+
+    .topbar-inner {
+      position: relative;
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(21, 81, 127, 0.14);
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--text-700);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #6a8098;
+      font-size: 0.87rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a,
+    .nav-trigger {
+      padding: 12px 14px;
+      border-radius: 10px;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a.active,
+    .nav-trigger:hover,
+    .nav-trigger:focus-visible,
+    .nav-trigger[aria-expanded="true"] {
+      color: var(--blue-900);
+      background: rgba(20, 71, 109, 0.06);
+    }
+
+    .nav-trigger {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-transform: inherit;
+      letter-spacing: inherit;
+    }
+
+    .caret {
+      display: none;
+      margin-left: 7px;
+      transition: transform 160ms ease;
+    }
+
+    .nav-trigger[aria-expanded="true"] .caret {
+      display: inline-block;
+      transform: rotate(180deg);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 160px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      box-shadow: 0 14px 30px rgba(21, 81, 127, 0.2);
+    }
+
+    .topbar-cta {
+      min-width: 0;
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-size: 0.84rem;
+      box-shadow: 0 12px 24px rgba(21, 81, 127, 0.16);
+    }
+
+    .about-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      padding: 18px 0 22px;
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: 0 20px 38px rgba(15, 58, 99, 0.12);
+    }
+
+    .about-menu[hidden] {
+      display: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .about-card {
+      display: block;
+      padding: 22px 20px;
+      border-radius: 16px;
+      background: #f6f8fb;
+      border: 1px solid rgba(20, 71, 109, 0.06);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .about-card strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1rem;
+    }
+
+    .about-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--text-700);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .about-card:hover,
+    .about-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(15, 58, 99, 0.08);
+      border-color: rgba(21, 81, 127, 0.14);
+    }
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-intro {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .section-intro::before {
+      content: "";
+      width: 4px;
+      height: 42px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--green-600), var(--blue-700));
+    }
+
+    .section-intro h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      letter-spacing: -0.05em;
+      color: var(--blue-900);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 0 68px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(92, 194, 61, 0.12), transparent 30%),
+        radial-gradient(circle at 82% 0%, rgba(27, 109, 158, 0.14), transparent 32%),
+        linear-gradient(145deg, #0c3557 0%, #10456f 44%, #0f3a63 100%);
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -140px -80px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(92, 194, 61, 0.18), transparent 68%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -120px -90px auto auto;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 520px);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #dff7e5;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero h1 {
+      margin: 18px 0 0;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1.04;
+      letter-spacing: -0.06em;
+    }
+
+    .hero h1 .accent {
+      color: #a4ef6a;
+    }
+
+    .hero-copy p {
+      margin: 22px 0 0;
+      max-width: 58ch;
+      color: rgba(255, 255, 255, 0.84);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-actions .btn-secondary {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .hero-scene {
+      position: relative;
+      min-height: 500px;
+      display: grid;
+      place-items: center;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.14), transparent 28%);
+      box-shadow: 0 30px 60px rgba(6, 28, 48, 0.28);
+    }
+
+    .hero-ground {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 110px;
+      background: linear-gradient(180deg, rgba(92, 194, 61, 0.06), rgba(92, 194, 61, 0.24));
+    }
+
+    .scene-svg {
+      position: absolute;
+      inset: 24px;
+      width: calc(100% - 48px);
+      height: calc(100% - 48px);
+    }
+
+    .windmill-blades {
+      transform-origin: 260px 208px;
+      animation: spin 5s linear infinite;
+    }
+
+    .recycle-ring {
+      transform-origin: 320px 220px;
+      animation: spin 10s linear infinite;
+    }
+
+    .crop-leaf {
+      transform-origin: center bottom;
+      animation: grow 2.8s ease-in-out infinite alternate;
+    }
+
+    .crop-leaf.delay-1 {
+      animation-delay: 0.4s;
+    }
+
+    .crop-leaf.delay-2 {
+      animation-delay: 0.8s;
+    }
+
+    .tree-canopy {
+      transform-origin: center bottom;
+      animation: sway 3.4s ease-in-out infinite alternate;
+    }
+
+    .tree-canopy.delay-1 {
+      animation-delay: 0.6s;
+    }
+
+    .sun-glow {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .overview-copy p {
+      margin: 0 0 20px;
+      color: var(--text-700);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .mission-card {
+      position: relative;
+      padding: 34px 28px 28px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, var(--blue-900), #123f68);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .mission-badge {
+      width: 78px;
+      height: 78px;
+      margin: -72px auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #a3ea67, #ecf8ea);
+      color: var(--blue-900);
+      box-shadow: 0 12px 22px rgba(15, 58, 99, 0.18);
+    }
+
+    .mission-card h3 {
+      margin: 0 0 12px;
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .mission-card p {
+      margin: 0;
+      text-align: center;
+      line-height: 1.76;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .why-wrap {
+      background: linear-gradient(180deg, rgba(92, 194, 61, 0.18), rgba(232, 245, 251, 0.3));
+      border-top: 1px solid rgba(92, 194, 61, 0.12);
+      border-bottom: 1px solid rgba(27, 109, 158, 0.08);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .why-card {
+      min-height: 200px;
+      border-radius: 24px;
+      border: 1.5px dashed rgba(21, 81, 127, 0.2);
+      background: rgba(255, 255, 255, 0.64);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .people-wrap {
+      background: linear-gradient(180deg, var(--blue-950), #103d66);
+      color: #fff;
+    }
+
+    .people-wrap .section-intro h2 {
+      color: #fff;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .person-card {
+      overflow: hidden;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 40px rgba(6, 28, 48, 0.24);
+    }
+
+    .person-art {
+      aspect-ratio: 4 / 4.4;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255,255,255,0.9), rgba(255,255,255,0.12) 44%, transparent 45%),
+        linear-gradient(180deg, rgba(168, 214, 234, 0.4), rgba(255,255,255,0.1));
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .person-card footer {
+      padding: 20px 20px 22px;
+      background: #fff;
+      color: var(--text-900);
+      border-top: 4px solid rgba(92, 194, 61, 0.55);
+    }
+
+    .person-card strong {
+      display: block;
+      font-size: 1.18rem;
+    }
+
+    .person-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--text-700);
+      font-size: 0.96rem;
+    }
+
+    .timeline-wrap {
+      background: linear-gradient(180deg, rgba(238, 251, 242, 0.72), rgba(255, 255, 255, 1));
+    }
+
+    .timeline-shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .timeline-years {
+      position: sticky;
+      top: 120px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .year-chip {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(21, 81, 127, 0.12);
+      background: #fff;
+      color: var(--text-700);
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(15, 58, 99, 0.06);
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .year-chip.active,
+    .year-chip:hover,
+    .year-chip:focus-visible {
+      transform: translateX(4px);
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .timeline-panel {
+      position: relative;
+      padding-left: 74px;
+      min-height: 560px;
+    }
+
+    .timeline-panel::before {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 12px;
+      bottom: 12px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(27, 109, 158, 0.35), rgba(92, 194, 61, 0.48));
+    }
+
+    .timeline-card {
+      position: relative;
+      display: none;
+      min-height: 150px;
+      padding: 24px 28px;
+      margin-bottom: 36px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-card.active {
+      display: block;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      left: -64px;
+      top: 34px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      box-shadow: 0 0 0 6px rgba(92, 194, 61, 0.12);
+    }
+
+    .timeline-card h3 {
+      margin: 0 0 20px;
+      font-size: 2rem;
+      color: var(--blue-900);
+      letter-spacing: -0.05em;
+    }
+
+    .timeline-placeholder {
+      min-height: 76px;
+      border-radius: 18px;
+      border: 1.5px dashed rgba(21, 81, 127, 0.16);
+      background: linear-gradient(180deg, rgba(232, 245, 251, 0.6), rgba(255, 255, 255, 0.7));
+    }
+
+    .timeline-scene {
+      margin-top: 34px;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(15, 58, 99, 0.06), rgba(92, 194, 61, 0.06));
+      border: 1px solid rgba(20, 71, 109, 0.08);
+    }
+
+    .assoc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .assoc-card {
+      min-height: 120px;
+      border-radius: 20px;
+      border: 1.5px dashed rgba(21, 81, 127, 0.18);
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(240, 249, 255, 0.92));
+    }
+
+    .office-panel {
+      margin-top: 28px;
+      padding: 30px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, var(--blue-950), #0f3b63);
+      color: #dff0ff;
+      box-shadow: var(--shadow);
+    }
+
+    .office-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .office-panel h3 {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 1.75rem;
+      letter-spacing: -0.04em;
+    }
+
+    .office-panel p {
+      margin: 0 0 12px;
+      line-height: 1.7;
+    }
+
+    .office-meta {
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-card {
+      min-height: 92px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .meta-card strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .meta-card span {
+      color: rgba(223, 240, 255, 0.74);
+    }
+
+    .footer-note {
+      padding: 26px 0 36px;
+      color: var(--text-700);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes grow {
+      from { transform: scaleY(0.82); }
+      to { transform: scaleY(1.08); }
+    }
+
+    @keyframes sway {
+      from { transform: rotate(-2deg) scale(0.98); }
+      to { transform: rotate(3deg) scale(1.02); }
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.72; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1.05); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .windmill-blades,
+      .recycle-ring,
+      .crop-leaf,
+      .tree-canopy,
+      .sun-glow {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .overview-grid,
+      .timeline-shell,
+      .office-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-grid,
+      .why-grid,
+      .people-grid,
+      .assoc-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .timeline-years {
+        position: static;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(calc(100% - 28px), var(--shell));
+      }
+
+      .nav {
+        min-height: auto;
+        padding: 16px 0 18px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.78rem;
+      }
+
+      .nav-links a,
+      .nav-trigger {
+        padding: 10px 12px;
+      }
+
+      .topbar-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .about-grid,
+      .mission-grid,
+      .why-grid,
+      .people-grid,
+      .assoc-grid,
+      .timeline-years {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 42px 0 42px;
+      }
+
+      .hero-scene {
+        min-height: 380px;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .timeline-panel {
+        padding-left: 58px;
+        min-height: auto;
+      }
+
+      .timeline-panel::before {
+        left: 18px;
+      }
+
+      .timeline-card::before {
+        left: -48px;
+      }
+
+      .brand img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="shell nav">
+        <a class="brand" href="/index.html" aria-label="Remedon home">
+          <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
+          <span class="brand-copy">
+            <strong>Remedon</strong>
+            <span>Carbon Intelligence</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/index.html">Home</a>
+          <a href="/index.html#services">Services</a>
+          <a href="/index.html#portfolio">Portfolio</a>
+          <a href="/index.html#solutions">Solutions</a>
+          <button
+            class="nav-trigger active"
+            type="button"
+            id="about-toggle"
+            aria-expanded="false"
+            aria-controls="about-menu"
+          >
+            About Us <span class="caret">^</span>
+          </button>
+        </nav>
+
+        <a class="btn btn-primary topbar-cta" href="/index.html#contact">Get In Touch</a>
+      </div>
+
+      <div class="about-menu" id="about-menu" hidden>
+        <div class="shell about-grid">
+          <a class="about-card" href="#about-overview">
+            <strong>About Us</strong>
+            <span>Overview of Remedon’s climate and circular market work.</span>
+          </a>
+          <a class="about-card" href="#key-people">
+            <strong>Senior Leadership</strong>
+            <span>Leadership placeholders for the team profile section.</span>
+          </a>
+          <a class="about-card" href="#key-people">
+            <strong>Board</strong>
+            <span>Board section is ready to expand from the same leadership area.</span>
+          </a>
+          <a class="about-card" href="#timeline">
+            <strong>FAQs</strong>
+            <span>Prepared as a future content-ready section via the interactive timeline.</span>
+          </a>
+          <a class="about-card" href="#office">
+            <strong>Careers</strong>
+            <span>Reserved for future team and hiring information.</span>
+          </a>
+          <a class="about-card" href="mailto:remedonpvtltd@gmail.com">
+            <strong>Support Us</strong>
+            <span>Use the current email for partnerships and collaboration outreach.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about-overview">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">About Remedon</span>
+          <h1><span class="accent">Climate action</span> systems built for measurable implementation.</h1>
+          <p>
+            Remedon works at the intersection of carbon asset development, Scope 3 carbon footprint calculation,
+            and Plastic EPR trading support. The company identity is rooted in remediation, market readiness,
+            and practical systems that help organizations move from intent to credible environmental execution.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#timeline">Explore Journey</a>
+            <a class="btn btn-secondary" href="#office">India Office</a>
+          </div>
+        </div>
+
+        <div class="hero-scene" aria-hidden="true">
+          <svg class="scene-svg" viewBox="0 0 520 500" role="presentation">
+            <circle class="sun-glow" cx="385" cy="88" r="42" fill="rgba(164, 239, 106, 0.25)"/>
+            <circle cx="385" cy="88" r="26" fill="#c8f57f"/>
+
+            <g transform="translate(144 134)">
+              <rect x="110" y="84" width="10" height="184" rx="5" fill="#d9edf7"/>
+              <g class="windmill-blades">
+                <circle cx="115" cy="76" r="10" fill="#f6fbff"/>
+                <path d="M115 14 C131 40 138 57 124 77 L115 76 Z" fill="#f6fbff"/>
+                <path d="M173 110 C142 108 126 98 116 82 L115 76 Z" fill="#f6fbff"/>
+                <path d="M72 118 C87 91 99 81 115 76 L116 82 Z" fill="#f6fbff"/>
+              </g>
+            </g>
+
+            <g transform="translate(266 262)">
+              <circle class="recycle-ring" cx="54" cy="-42" r="42" fill="none" stroke="#8ee05b" stroke-width="10" stroke-dasharray="56 18"/>
+              <path d="M56 -91 L76 -76 L52 -68 Z" fill="#8ee05b"/>
+              <path d="M98 -24 L72 -14 L77 -40 Z" fill="#8ee05b"/>
+              <path d="M13 -29 L34 -44 L39 -17 Z" fill="#8ee05b"/>
+              <rect x="36" y="8" width="38" height="84" rx="16" fill="#dff1f8" stroke="#9acde6"/>
+              <path d="M40 42 H70" stroke="#86c65a" stroke-width="6" stroke-linecap="round"/>
+              <path d="M40 60 H70" stroke="#86c65a" stroke-width="6" stroke-linecap="round"/>
+              <path d="M40 78 H70" stroke="#86c65a" stroke-width="6" stroke-linecap="round"/>
+            </g>
+
+            <g transform="translate(298 210)">
+              <rect x="108" y="112" width="8" height="88" rx="4" fill="#d4ebf6"/>
+              <rect x="152" y="124" width="8" height="76" rx="4" fill="#d4ebf6"/>
+              <path d="M68 200 H196" stroke="#d4ebf6" stroke-width="4" stroke-linecap="round"/>
+              <g class="tree-canopy">
+                <circle cx="113" cy="98" r="26" fill="#b1ef6f"/>
+                <circle cx="101" cy="108" r="16" fill="#9cdf61"/>
+                <circle cx="124" cy="109" r="15" fill="#dff7a4"/>
+              </g>
+              <g class="tree-canopy delay-1">
+                <circle cx="157" cy="112" r="22" fill="#b1ef6f"/>
+                <circle cx="147" cy="120" r="12" fill="#9cdf61"/>
+                <circle cx="166" cy="121" r="13" fill="#dff7a4"/>
+              </g>
+            </g>
+
+            <g transform="translate(118 318)">
+              <path d="M-18 96 C22 24 114 24 164 96" fill="none" stroke="rgba(164,239,106,0.14)" stroke-width="12" stroke-linecap="round"/>
+              <g class="crop-leaf">
+                <rect x="22" y="0" width="6" height="96" rx="3" fill="#d6eef8"/>
+                <path d="M24 52 C-10 32 -6 2 24 0 Z" fill="#98e060"/>
+              </g>
+              <g class="crop-leaf delay-1">
+                <rect x="72" y="10" width="6" height="86" rx="3" fill="#d6eef8"/>
+                <path d="M74 46 C46 22 49 -4 74 10 Z" fill="#7ed34e"/>
+              </g>
+              <g class="crop-leaf delay-2">
+                <rect x="120" y="-2" width="6" height="98" rx="3" fill="#d6eef8"/>
+                <path d="M122 54 C156 26 154 -4 122 -2 Z" fill="#a5ef69"/>
+              </g>
+            </g>
+
+            <path d="M0 420 C86 388 160 398 240 420 C322 442 426 442 520 410 V500 H0 Z" fill="rgba(92, 194, 61, 0.08)"/>
+          </svg>
+          <div class="hero-ground"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="overview-grid">
+          <div class="overview-copy">
+            <div class="section-intro">
+              <h2>What We Do</h2>
+            </div>
+            <p>
+              Remedon is positioned as a climate intelligence and circular markets company supporting organizations that need
+              stronger execution across environmental assets, compliance systems, and reporting-ready workflows.
+            </p>
+            <p>
+              Our core areas of work include carbon asset development, Scope 3 carbon footprint calculation, and Plastic EPR
+              trading support. The operating model is built around credibility, traceability, documentation strength, and
+              market-facing clarity.
+            </p>
+          </div>
+
+          <div>
+            <div class="mission-grid">
+              <article class="mission-card">
+                <div class="mission-badge">
+                  <svg width="34" height="34" viewBox="0 0 34 34" role="presentation">
+                    <path d="M17 5 L21.5 14.5 L32 16 L24.5 23.4 L26.3 34 L17 29.1 L7.7 34 L9.5 23.4 L2 16 L12.5 14.5 Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Mission</h3>
+                <p>Enable climate and circular economy action through better systems, stronger documentation, and practical execution support.</p>
+              </article>
+
+              <article class="mission-card">
+                <div class="mission-badge">
+                  <svg width="34" height="34" viewBox="0 0 34 34" role="presentation">
+                    <path d="M17 4 C23.6 4 29 9.4 29 16 C29 23.4 23.9 27.3 18.8 30.8 C17.7 31.5 16.3 31.5 15.2 30.8 C10.1 27.3 5 23.4 5 16 C5 9.4 10.4 4 17 4 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                    <circle cx="17" cy="16" r="4" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Vision</h3>
+                <p>Build a Remedon brand presence that reflects measurable climate action, credible market readiness, and long-term environmental stewardship.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-wrap" id="why-us">
+      <div class="shell">
+        <div class="section-intro">
+          <h2>Why Us</h2>
+        </div>
+        <div class="why-grid" aria-label="Why Us placeholders">
+          <div class="why-card"></div>
+          <div class="why-card"></div>
+          <div class="why-card"></div>
+          <div class="why-card"></div>
+          <div class="why-card"></div>
+          <div class="why-card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section people-wrap" id="key-people">
+      <div class="shell">
+        <div class="section-intro">
+          <h2>Key People</h2>
+        </div>
+        <div class="people-grid">
+          <article class="person-card">
+            <div class="person-art">
+              <svg viewBox="0 0 240 260" role="img" aria-label="Placeholder portrait for Balwant Bisht">
+                <circle cx="120" cy="86" r="52" fill="#f3d9c7"/>
+                <path d="M68 92 C70 46 102 30 120 30 C146 30 176 50 172 94 C162 74 150 62 120 62 C93 62 80 74 68 92 Z" fill="#213d55"/>
+                <path d="M66 224 C74 166 95 140 120 140 C145 140 166 166 174 224 Z" fill="#1b6d9e"/>
+                <path d="M94 172 C101 184 108 190 120 190 C132 190 139 184 146 172" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                <rect x="86" y="154" width="68" height="78" rx="22" fill="#123d66"/>
+              </svg>
+            </div>
+            <footer>
+              <strong>Balwant Bisht</strong>
+              <span>Profile details to be added</span>
+            </footer>
+          </article>
+
+          <article class="person-card">
+            <div class="person-art">
+              <svg viewBox="0 0 240 260" role="img" aria-label="Placeholder portrait for Waris Hooda">
+                <circle cx="120" cy="86" r="52" fill="#f3d9c7"/>
+                <path d="M66 98 C66 54 92 28 120 28 C148 28 176 54 174 100 C162 78 147 68 120 68 C94 68 80 78 66 98 Z" fill="#22384d"/>
+                <path d="M66 224 C74 166 95 140 120 140 C145 140 166 166 174 224 Z" fill="#3da832"/>
+                <path d="M92 170 C102 184 110 190 120 190 C130 190 138 184 148 170" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                <rect x="84" y="154" width="72" height="78" rx="22" fill="#2c8647"/>
+              </svg>
+            </div>
+            <footer>
+              <strong>Waris Hooda</strong>
+              <span>Profile details to be added</span>
+            </footer>
+          </article>
+
+          <article class="person-card">
+            <div class="person-art">
+              <svg viewBox="0 0 240 260" role="img" aria-label="Placeholder portrait for Bhumit Hooda">
+                <circle cx="120" cy="86" r="52" fill="#f3d9c7"/>
+                <path d="M70 94 C72 48 98 32 120 32 C145 32 172 50 170 98 C156 78 144 70 120 70 C98 70 82 80 70 94 Z" fill="#27445d"/>
+                <path d="M66 224 C74 166 95 140 120 140 C145 140 166 166 174 224 Z" fill="#1f3b56"/>
+                <path d="M92 172 C101 184 108 190 120 190 C132 190 139 184 148 172" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                <rect x="84" y="154" width="72" height="78" rx="22" fill="#193955"/>
+              </svg>
+            </div>
+            <footer>
+              <strong>Bhumit Hooda</strong>
+              <span>Profile details to be added</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-wrap" id="timeline">
+      <div class="shell">
+        <div class="section-intro">
+          <h2>Started</h2>
+        </div>
+        <div class="timeline-shell">
+          <div class="timeline-years" aria-label="Year selector">
+            <button class="year-chip active" type="button" data-year="2022">2022</button>
+            <button class="year-chip" type="button" data-year="2023">2023</button>
+            <button class="year-chip" type="button" data-year="2024">2024</button>
+            <button class="year-chip" type="button" data-year="2025">2025</button>
+            <button class="year-chip" type="button" data-year="2026">2026</button>
+          </div>
+
+          <div>
+            <div class="timeline-panel">
+              <article class="timeline-card active" data-year-panel="2022">
+                <h3>2022</h3>
+                <div class="timeline-placeholder"></div>
+              </article>
+              <article class="timeline-card" data-year-panel="2023">
+                <h3>2023</h3>
+                <div class="timeline-placeholder"></div>
+              </article>
+              <article class="timeline-card" data-year-panel="2024">
+                <h3>2024</h3>
+                <div class="timeline-placeholder"></div>
+              </article>
+              <article class="timeline-card" data-year-panel="2025">
+                <h3>2025</h3>
+                <div class="timeline-placeholder"></div>
+              </article>
+              <article class="timeline-card" data-year-panel="2026">
+                <h3>2026</h3>
+                <div class="timeline-placeholder"></div>
+              </article>
+            </div>
+
+            <div class="timeline-scene" aria-hidden="true">
+              <svg viewBox="0 0 760 220" role="presentation">
+                <circle cx="94" cy="52" r="24" fill="rgba(92,194,61,0.16)"/>
+                <g transform="translate(62 66)">
+                  <rect x="34" y="14" width="8" height="90" rx="4" fill="#d7ebf5"/>
+                  <g class="windmill-blades" style="transform-origin:38px 12px;">
+                    <circle cx="38" cy="12" r="6" fill="#0f3a63"/>
+                    <path d="M38 -22 C48 -8 52 1 44 13 L38 12 Z" fill="#1b6d9e"/>
+                    <path d="M72 32 C54 31 45 25 38 16 L38 12 Z" fill="#3da832"/>
+                    <path d="M12 38 C20 22 26 17 38 12 L38 16 Z" fill="#88d544"/>
+                  </g>
+                </g>
+                <g transform="translate(290 150)">
+                  <g class="crop-leaf">
+                    <rect x="0" y="-52" width="5" height="54" rx="3" fill="#1b6d9e"/>
+                    <path d="M2 -22 C-18 -44 -16 -60 2 -52 Z" fill="#5cc23d"/>
+                  </g>
+                  <g class="crop-leaf delay-1" transform="translate(28 0)">
+                    <rect x="0" y="-64" width="5" height="66" rx="3" fill="#1b6d9e"/>
+                    <path d="M2 -30 C24 -52 18 -70 2 -64 Z" fill="#88d544"/>
+                  </g>
+                  <g class="crop-leaf delay-2" transform="translate(56 0)">
+                    <rect x="0" y="-58" width="5" height="60" rx="3" fill="#1b6d9e"/>
+                    <path d="M2 -26 C-16 -46 -14 -64 2 -58 Z" fill="#5cc23d"/>
+                  </g>
+                </g>
+                <g transform="translate(514 116)">
+                  <g class="tree-canopy">
+                    <rect x="38" y="8" width="8" height="54" rx="4" fill="#1b6d9e"/>
+                    <circle cx="42" cy="0" r="24" fill="#95e05a"/>
+                    <circle cx="26" cy="10" r="14" fill="#79ca54"/>
+                    <circle cx="58" cy="10" r="15" fill="#b6ef7b"/>
+                  </g>
+                </g>
+                <g transform="translate(660 94)">
+                  <circle class="recycle-ring" cx="26" cy="26" r="22" fill="none" stroke="#5cc23d" stroke-width="8" stroke-dasharray="30 12"/>
+                  <path d="M26 0 L36 8 L24 12 Z" fill="#5cc23d"/>
+                  <path d="M48 26 L39 35 L37 22 Z" fill="#5cc23d"/>
+                  <path d="M10 40 L18 30 L22 43 Z" fill="#5cc23d"/>
+                </g>
+                <path d="M18 182 H742" stroke="rgba(21,81,127,0.14)" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="associations">
+      <div class="shell">
+        <div class="section-intro">
+          <h2>Associations</h2>
+        </div>
+        <div class="assoc-grid" aria-label="Associations placeholders">
+          <div class="assoc-card"></div>
+          <div class="assoc-card"></div>
+          <div class="assoc-card"></div>
+          <div class="assoc-card"></div>
+        </div>
+
+        <div class="office-panel" id="office">
+          <div class="office-grid">
+            <div>
+              <h3>India Office</h3>
+              <p>Gurugram, Haryana</p>
+              <p>Email: <a href="mailto:remedonpvtltd@gmail.com">remedonpvtltd@gmail.com</a></p>
+            </div>
+            <div class="office-meta">
+              <div class="meta-card">
+                <strong>CIN Number</strong>
+                <span>&nbsp;</span>
+              </div>
+              <div class="meta-card">
+                <strong>GST Number</strong>
+                <span>&nbsp;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <p class="footer-note">Copyright © 2026 Remedon. All Rights Reserved.</p>
+
+  <script>
+    const aboutToggle = document.getElementById("about-toggle");
+    const aboutMenu = document.getElementById("about-menu");
+
+    if (aboutToggle && aboutMenu) {
+      const closeAboutMenu = () => {
+        aboutToggle.setAttribute("aria-expanded", "false");
+        aboutMenu.hidden = true;
+      };
+
+      const openAboutMenu = () => {
+        aboutToggle.setAttribute("aria-expanded", "true");
+        aboutMenu.hidden = false;
+      };
+
+      aboutToggle.addEventListener("click", () => {
+        const isOpen = aboutToggle.getAttribute("aria-expanded") === "true";
+        aboutToggle.setAttribute("aria-expanded", String(!isOpen));
+        aboutMenu.hidden = isOpen;
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!aboutMenu.hidden && !event.target.closest(".topbar-inner")) {
+          closeAboutMenu();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeAboutMenu();
+        }
+      });
+
+      aboutMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeAboutMenu);
+      });
+    }
+
+    const yearButtons = Array.from(document.querySelectorAll(".year-chip"));
+    const yearPanels = Array.from(document.querySelectorAll("[data-year-panel]"));
+    const params = new URLSearchParams(window.location.search);
+    const initialYear = params.get("year") || "2022";
+
+    const activateYear = (year) => {
+      yearButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.year === year);
+      });
+
+      yearPanels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.yearPanel === year);
+      });
+    };
+
+    yearButtons.forEach((button) => {
+      button.addEventListener("click", () => activateYear(button.dataset.year));
+    });
+
+    activateYear(initialYear);
+
+    const previewSection = params.get("section");
+    if (previewSection) {
+      window.addEventListener("load", () => {
+        const target = document.getElementById(previewSection);
+        if (target) {
+          target.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
