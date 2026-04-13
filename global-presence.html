@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Presence | Remedon</title>
+  <meta
+    name="description"
+    content="Explore Remedon's corporate, India, UK, Dubai, Malta, and China offices on an interactive global presence map."
+  >
+  <style>
+    :root {
+      --blue-950: #0a2b47;
+      --blue-900: #0f3a63;
+      --blue-800: #15517f;
+      --blue-700: #1b6d9e;
+      --green-700: #3da832;
+      --green-600: #5cc23d;
+      --green-500: #88d544;
+      --text-900: #1f3b56;
+      --text-700: #55708a;
+      --line: rgba(20, 71, 109, 0.12);
+      --shadow: 0 18px 50px rgba(15, 58, 99, 0.12);
+      --shell: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-900);
+      background:
+        radial-gradient(circle at top left, rgba(92, 194, 61, 0.08), transparent 24%),
+        radial-gradient(circle at top right, rgba(27, 109, 158, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, #f7fcff 52%, #ffffff 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--shell));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: 0 6px 20px rgba(15, 58, 99, 0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(21, 81, 127, 0.14);
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--text-700);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #6a8098;
+      font-size: 0.87rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a {
+      padding: 12px 14px;
+      border-radius: 10px;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a.active {
+      color: var(--blue-900);
+      background: rgba(20, 71, 109, 0.06);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 160px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      box-shadow: 0 14px 30px rgba(21, 81, 127, 0.2);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 54px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(92, 194, 61, 0.14), transparent 30%),
+        radial-gradient(circle at 82% 0%, rgba(27, 109, 158, 0.14), transparent 32%),
+        linear-gradient(145deg, #0c3557 0%, #10456f 44%, #0f3a63 100%);
+      color: #fff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.95fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #dff7e5;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.08;
+    }
+
+    .hero h1 {
+      margin-top: 18px;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      letter-spacing: -0.06em;
+    }
+
+    .hero h1 .accent {
+      color: #a4ef6a;
+    }
+
+    .hero p {
+      margin: 20px 0 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 56ch;
+    }
+
+    .hero-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 44px rgba(6, 28, 48, 0.22);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .hero-stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      color: var(--blue-900);
+      font-size: clamp(2rem, 4.6vw, 3.4rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-head p {
+      max-width: 760px;
+      margin: 14px auto 0;
+      color: var(--text-700);
+      line-height: 1.78;
+      font-size: 1.02rem;
+    }
+
+    .presence-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .map-panel {
+      position: relative;
+      min-height: 640px;
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(240, 249, 255, 0.96)),
+        radial-gradient(circle at 50% 12%, rgba(92, 194, 61, 0.08), transparent 24%);
+      border: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .map-svg {
+      position: absolute;
+      inset: 22px;
+      width: calc(100% - 44px);
+      height: calc(100% - 44px);
+    }
+
+    .continent {
+      fill: rgba(27, 109, 158, 0.12);
+      stroke: rgba(21, 81, 127, 0.18);
+      stroke-width: 2;
+    }
+
+    .route-line {
+      fill: none;
+      stroke: rgba(61, 168, 50, 0.34);
+      stroke-width: 3;
+      stroke-dasharray: 10 10;
+    }
+
+    .marker {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      box-shadow: 0 0 0 10px rgba(92, 194, 61, 0.14), 0 12px 22px rgba(15, 58, 99, 0.18);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .marker::after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1px solid rgba(61, 168, 50, 0.4);
+      animation: pulse-ring 2.8s ease-out infinite;
+    }
+
+    .marker:hover,
+    .marker:focus-visible,
+    .marker.active {
+      transform: scale(1.18);
+      box-shadow: 0 0 0 14px rgba(92, 194, 61, 0.2), 0 12px 24px rgba(15, 58, 99, 0.24);
+    }
+
+    .marker-label {
+      position: absolute;
+      top: 22px;
+      left: 14px;
+      min-width: 120px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(20, 71, 109, 0.08);
+      color: var(--blue-900);
+      font-size: 0.82rem;
+      font-weight: 800;
+      box-shadow: 0 12px 24px rgba(15, 58, 99, 0.08);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(4px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .marker.active .marker-label,
+    .marker:hover .marker-label,
+    .marker:focus-visible .marker-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .details-panel {
+      display: grid;
+      gap: 16px;
+      position: sticky;
+      top: 110px;
+    }
+
+    .summary-card,
+    .detail-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .summary-card p,
+    .detail-card p,
+    .detail-card li {
+      margin: 0;
+      color: var(--text-700);
+      line-height: 1.75;
+    }
+
+    .detail-card h3 {
+      color: var(--blue-900);
+      font-size: 1.65rem;
+      letter-spacing: -0.04em;
+    }
+
+    .detail-card .office-type {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(92, 194, 61, 0.12);
+      color: var(--blue-900);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .detail-card .address {
+      margin-top: 18px;
+    }
+
+    .location-tabs {
+      display: grid;
+      gap: 12px;
+    }
+
+    .location-tab {
+      width: 100%;
+      text-align: left;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(20, 71, 109, 0.08);
+      background: #fff;
+      color: var(--text-700);
+      cursor: pointer;
+      transition: transform 160ms ease, color 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .location-tab strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .location-tab span {
+      display: block;
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .location-tab.active,
+    .location-tab:hover,
+    .location-tab:focus-visible {
+      transform: translateY(-1px);
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      border-color: transparent;
+      box-shadow: 0 12px 24px rgba(15, 58, 99, 0.12);
+    }
+
+    .location-tab.active strong,
+    .location-tab:hover strong,
+    .location-tab:focus-visible strong,
+    .location-tab.active span,
+    .location-tab:hover span,
+    .location-tab:focus-visible span {
+      color: #fff;
+    }
+
+    .footer-note {
+      padding: 26px 0 36px;
+      color: var(--text-700);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @keyframes pulse-ring {
+      0% { opacity: 0.8; transform: scale(0.75); }
+      100% { opacity: 0; transform: scale(1.4); }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .presence-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .details-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(calc(100% - 28px), var(--shell));
+      }
+
+      .nav {
+        min-height: auto;
+        padding: 16px 0 18px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.78rem;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+      }
+
+      .map-panel {
+        min-height: 520px;
+      }
+
+      .marker-label {
+        min-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="/index.html" aria-label="Remedon home">
+        <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
+        <span class="brand-copy">
+          <strong>Remedon</strong>
+          <span>Carbon Intelligence</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/index.html#services">Services</a>
+        <a href="/index.html#portfolio">Portfolio</a>
+        <a href="/about.html">About Us</a>
+        <a class="active" href="/global-presence.html">Global Presence</a>
+      </nav>
+
+      <a class="btn btn-primary" href="/about.html#office">Office Details</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">Global Presence</span>
+          <h1><span class="accent">Remedon</span> across key markets and operating geographies.</h1>
+          <p>
+            This interactive presence map shows the current corporate and regional office footprint across India,
+            the UK, Dubai, Malta, and China. Select a location on the map or in the office list to view the full address.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <h3>Global Office Network</h3>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>6</strong>
+              <span>Listed locations including the corporate office.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>5</strong>
+              <span>Countries represented in the current footprint.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>3</strong>
+              <span>Core regions across Asia, Europe, and the Middle East.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Interactive Map</h2>
+          <p>Choose a marker or an office card to inspect the full address and highlight the location on the map.</p>
+        </div>
+
+        <div class="presence-grid">
+          <div class="map-panel">
+            <svg class="map-svg" viewBox="0 0 900 560" role="presentation" aria-hidden="true">
+              <path class="continent" d="M107 170 C145 124 221 104 292 121 C325 129 349 147 367 172 C350 194 327 210 288 214 C260 217 237 226 221 244 C182 234 149 220 118 198 C105 189 98 181 107 170 Z"/>
+              <path class="continent" d="M247 257 C281 256 309 272 322 300 C336 330 335 370 316 409 C302 436 286 451 261 460 C241 451 226 437 219 415 C205 372 206 324 224 291 C230 279 238 266 247 257 Z"/>
+              <path class="continent" d="M424 144 C456 133 490 133 521 146 C536 153 549 164 558 178 C551 193 539 204 518 208 C501 211 485 213 470 219 C450 213 433 205 421 191 C415 184 413 176 424 144 Z"/>
+              <path class="continent" d="M472 226 C507 211 547 212 584 228 C607 239 625 259 635 285 C624 317 604 342 571 364 C544 381 516 386 488 382 C463 353 454 321 457 289 C458 266 463 244 472 226 Z"/>
+              <path class="continent" d="M579 159 C627 133 689 126 755 137 C811 147 845 174 857 215 C844 259 814 285 768 301 C731 314 690 315 649 304 C617 296 588 279 565 252 C558 224 563 191 579 159 Z"/>
+              <path class="continent" d="M735 392 C760 383 787 386 812 398 C829 407 843 420 850 437 C838 453 820 465 796 470 C775 474 754 470 735 459 C723 439 723 416 735 392 Z"/>
+              <path class="route-line" d="M503 238 C486 221 476 204 479 186"/>
+              <path class="route-line" d="M503 238 C565 260 609 252 665 220"/>
+              <path class="route-line" d="M503 238 C552 220 571 196 567 170"/>
+              <path class="route-line" d="M503 238 C518 243 535 252 544 272"/>
+              <path class="route-line" d="M503 238 C706 251 739 222 776 194"/>
+            </svg>
+
+            <button class="marker active" data-office="corporate" style="left: 53.5%; top: 36%;">
+              <span class="marker-label">Corporate Office</span>
+            </button>
+            <button class="marker" data-office="india" style="left: 54.5%; top: 40.5%;">
+              <span class="marker-label">India Office</span>
+            </button>
+            <button class="marker" data-office="uk" style="left: 51.5%; top: 30.5%;">
+              <span class="marker-label">UK Office</span>
+            </button>
+            <button class="marker" data-office="dubai" style="left: 58%; top: 37%;">
+              <span class="marker-label">Dubai Office</span>
+            </button>
+            <button class="marker" data-office="malta" style="left: 53%; top: 34.5%;">
+              <span class="marker-label">Malta Office</span>
+            </button>
+            <button class="marker" data-office="china" style="left: 76%; top: 34%;">
+              <span class="marker-label">China Office</span>
+            </button>
+          </div>
+
+          <div class="details-panel">
+            <div class="summary-card">
+              <strong>Office Directory</strong>
+              <p>Remedon’s office footprint is shown across core operating and partner-facing locations. Select any office below to focus the map and read the address details.</p>
+            </div>
+
+            <article class="detail-card" id="office-detail">
+              <h3 id="detail-title">Corporate Office</h3>
+              <span class="office-type" id="detail-type">Head Office</span>
+              <p class="address" id="detail-address">13- Ring Road, Lajpat Nagar -04, New Delhi -110024.</p>
+            </article>
+
+            <div class="location-tabs">
+              <button class="location-tab active" data-office="corporate">
+                <strong>Corporate Office</strong>
+                <span>New Delhi, India</span>
+              </button>
+              <button class="location-tab" data-office="india">
+                <strong>India Office</strong>
+                <span>Faridabad, Haryana</span>
+              </button>
+              <button class="location-tab" data-office="uk">
+                <strong>UK Office</strong>
+                <span>West Midlands, Birmingham</span>
+              </button>
+              <button class="location-tab" data-office="dubai">
+                <strong>Dubai Office</strong>
+                <span>Deira, Dubai, UAE</span>
+              </button>
+              <button class="location-tab" data-office="malta">
+                <strong>Malta Office</strong>
+                <span>Birżebbuġa, Malta</span>
+              </button>
+              <button class="location-tab" data-office="china">
+                <strong>China Office</strong>
+                <span>Xi'an, Shaanxi, China</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <p class="footer-note">Copyright © 2026 Remedon. All Rights Reserved.</p>
+
+  <script>
+    const officeData = {
+      corporate: {
+        title: "Corporate Office",
+        type: "Head Office",
+        address: "13- Ring Road, Lajpat Nagar -04, New Delhi -110024."
+      },
+      india: {
+        title: "India Office",
+        type: "Regional Office",
+        address: "Batra Complex, Mathura Road, 17/3, Faridabad, Haryana, Pin-121017."
+      },
+      uk: {
+        title: "UK Office",
+        type: "Regional Office",
+        address: "240 hydes road, West browmwich, West Midland, B71 2 ed, Birmingham, UK."
+      },
+      dubai: {
+        title: "Dubai Office",
+        type: "Regional Office",
+        address: "2206, Al Masraf tower, Deira, DUBAI, UAE, PIN 000000."
+      },
+      malta: {
+        title: "Malta Office",
+        type: "Regional Office",
+        address: "27, Wojtyla Court, Triq il-Fossili, Birżebbuġa, BBG 1210, Malta."
+      },
+      china: {
+        title: "China Office",
+        type: "Regional Office",
+        address: "Behind Amber palace, silk street, Indian Pavilion Tang west Market, Laodong South road, Xi'an, Shaanxi, China."
+      }
+    };
+
+    const markers = Array.from(document.querySelectorAll(".marker"));
+    const tabs = Array.from(document.querySelectorAll(".location-tab"));
+    const detailTitle = document.getElementById("detail-title");
+    const detailType = document.getElementById("detail-type");
+    const detailAddress = document.getElementById("detail-address");
+
+    const setActiveOffice = (officeKey) => {
+      const office = officeData[officeKey];
+      if (!office) return;
+
+      markers.forEach((marker) => {
+        marker.classList.toggle("active", marker.dataset.office === officeKey);
+      });
+
+      tabs.forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.office === officeKey);
+      });
+
+      detailTitle.textContent = office.title;
+      detailType.textContent = office.type;
+      detailAddress.textContent = office.address;
+    };
+
+    markers.forEach((marker) => {
+      marker.addEventListener("click", () => setActiveOffice(marker.dataset.office));
+    });
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => setActiveOffice(tab.dataset.office));
+    });
+  </script>
+</body>
+</html>
