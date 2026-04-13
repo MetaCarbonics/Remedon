@@ -283,6 +283,17 @@
       box-shadow: var(--shadow);
     }
 
+    .map-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(92, 194, 61, 0.08), transparent 22%),
+        linear-gradient(90deg, rgba(21, 81, 127, 0.05) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(rgba(21, 81, 127, 0.05) 1px, transparent 1px) 0 0 / 72px 72px;
+      pointer-events: none;
+    }
+
     .map-svg {
       position: absolute;
       inset: 22px;
@@ -294,6 +305,22 @@
       fill: rgba(27, 109, 158, 0.12);
       stroke: rgba(21, 81, 127, 0.18);
       stroke-width: 2;
+    }
+
+    .map-shell {
+      fill: rgba(255, 255, 255, 0.32);
+      stroke: rgba(21, 81, 127, 0.08);
+      stroke-width: 2;
+    }
+
+    .map-grid {
+      fill: none;
+      stroke: rgba(21, 81, 127, 0.09);
+      stroke-width: 1.5;
+    }
+
+    .map-grid.bold {
+      stroke: rgba(21, 81, 127, 0.14);
     }
 
     .route-line {
@@ -579,12 +606,27 @@
       <div class="shell">
         <div class="section-head">
           <h2>Interactive Map</h2>
-          <p>Choose a marker or an office card to inspect the full address and highlight the location on the map.</p>
         </div>
 
         <div class="presence-grid">
           <div class="map-panel">
             <svg class="map-svg" viewBox="0 0 900 560" role="presentation" aria-hidden="true">
+              <rect class="map-shell" x="12" y="12" width="876" height="536" rx="28"/>
+              <path class="map-grid" d="M84 44 V516"/>
+              <path class="map-grid" d="M168 44 V516"/>
+              <path class="map-grid" d="M252 44 V516"/>
+              <path class="map-grid bold" d="M336 44 V516"/>
+              <path class="map-grid" d="M420 44 V516"/>
+              <path class="map-grid bold" d="M504 44 V516"/>
+              <path class="map-grid" d="M588 44 V516"/>
+              <path class="map-grid" d="M672 44 V516"/>
+              <path class="map-grid" d="M756 44 V516"/>
+              <path class="map-grid" d="M840 44 V516"/>
+              <path class="map-grid" d="M44 108 H856"/>
+              <path class="map-grid" d="M44 184 H856"/>
+              <path class="map-grid bold" d="M44 260 H856"/>
+              <path class="map-grid" d="M44 336 H856"/>
+              <path class="map-grid" d="M44 412 H856"/>
               <path class="continent" d="M107 170 C145 124 221 104 292 121 C325 129 349 147 367 172 C350 194 327 210 288 214 C260 217 237 226 221 244 C182 234 149 220 118 198 C105 189 98 181 107 170 Z"/>
               <path class="continent" d="M247 257 C281 256 309 272 322 300 C336 330 335 370 316 409 C302 436 286 451 261 460 C241 451 226 437 219 415 C205 372 206 324 224 291 C230 279 238 266 247 257 Z"/>
               <path class="continent" d="M424 144 C456 133 490 133 521 146 C536 153 549 164 558 178 C551 193 539 204 518 208 C501 211 485 213 470 219 C450 213 433 205 421 191 C415 184 413 176 424 144 Z"/>
