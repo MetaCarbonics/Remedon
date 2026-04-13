@@ -562,6 +562,37 @@
       padding: 24px;
     }
 
+    .person-art.photo-art {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 24% 20%, rgba(92, 194, 61, 0.3), transparent 30%),
+        radial-gradient(circle at 78% 22%, rgba(27, 109, 158, 0.24), transparent 34%),
+        linear-gradient(145deg, rgba(13, 53, 87, 0.98), rgba(24, 86, 127, 0.92));
+    }
+
+    .person-art.photo-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 38%),
+        linear-gradient(0deg, rgba(10, 43, 71, 0.42), transparent 34%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .person-art.photo-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      position: relative;
+      z-index: 0;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
     .person-card footer {
       padding: 20px 20px 22px;
       background: #fff;
@@ -1032,14 +1063,8 @@
         </div>
         <div class="people-grid">
           <article class="person-card">
-            <div class="person-art">
-              <svg viewBox="0 0 240 260" role="img" aria-label="Placeholder portrait for Balwant Bisht">
-                <circle cx="120" cy="86" r="52" fill="#f3d9c7"/>
-                <path d="M68 92 C70 46 102 30 120 30 C146 30 176 50 172 94 C162 74 150 62 120 62 C93 62 80 74 68 92 Z" fill="#213d55"/>
-                <path d="M66 224 C74 166 95 140 120 140 C145 140 166 166 174 224 Z" fill="#1b6d9e"/>
-                <path d="M94 172 C101 184 108 190 120 190 C132 190 139 184 146 172" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
-                <rect x="86" y="154" width="68" height="78" rx="22" fill="#123d66"/>
-              </svg>
+            <div class="person-art photo-art">
+              <img src="assets/balwant-bisht.jpeg" alt="Balwant Bisht portrait">
             </div>
             <footer>
               <strong>Balwant Bisht</strong>
