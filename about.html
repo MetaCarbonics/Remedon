@@ -420,15 +420,35 @@
     }
 
     .windmill-blades {
-      transform-box: fill-box;
-      transform-origin: center;
       animation: spin 4.8s linear infinite;
     }
 
+    .windmill-blades.hero-left {
+      transform-origin: 112px 112px;
+    }
+
+    .windmill-blades.hero-right {
+      transform-origin: 221.5px 78px;
+    }
+
+    .windmill-blades.showcase-left {
+      transform-origin: 111px 108px;
+    }
+
+    .windmill-blades.showcase-right {
+      transform-origin: 248px 66px;
+    }
+
     .plastic-rotation {
-      transform-box: fill-box;
-      transform-origin: center;
       animation: spin 7s linear infinite;
+    }
+
+    .plastic-rotation.hero-plastic {
+      transform-origin: 72px 110px;
+    }
+
+    .plastic-rotation.showcase-plastic {
+      transform-origin: 96px 124px;
     }
 
     .forest-tree {
@@ -913,14 +933,14 @@
               <g transform="translate(68 144)">
                 <path d="M72 288 H276" stroke="rgba(217,237,247,0.94)" stroke-width="5" stroke-linecap="round"/>
                 <rect x="108" y="112" width="8" height="176" rx="4" fill="#d9edf7"/>
-                <g class="windmill-blades">
+                <g class="windmill-blades hero-left">
                   <circle cx="112" cy="112" r="8" fill="#f6fbff"/>
                   <path d="M112 46 C127 72 132 88 120 112 L112 112 Z" fill="#f6fbff"/>
                   <path d="M168 144 C140 142 126 135 113 120 L112 112 Z" fill="#cbeeff"/>
                   <path d="M66 146 C81 122 92 116 112 112 L113 120 Z" fill="#8dd84c"/>
                 </g>
                 <rect x="218" y="78" width="7" height="210" rx="4" fill="#d9edf7"/>
-                <g class="windmill-blades">
+                <g class="windmill-blades hero-right">
                   <circle cx="221.5" cy="78" r="7" fill="#f6fbff"/>
                   <path d="M221.5 18 C235 42 240 56 229 78 L221.5 78 Z" fill="#cbeeff"/>
                   <path d="M272 106 C247 104 235 99 222 86 L221.5 78 Z" fill="#88d544"/>
@@ -930,7 +950,7 @@
             </g>
 
             <g class="scene-phase phase-plastic" transform="translate(196 118)">
-              <g class="plastic-rotation">
+              <g class="plastic-rotation hero-plastic">
                 <circle cx="72" cy="110" r="62" fill="none" stroke="rgba(164,239,106,0.92)" stroke-width="10" stroke-dasharray="68 24"/>
                 <path d="M72 40 L90 52 L70 60 Z" fill="#a4ef6a"/>
                 <path d="M132 110 L112 126 L108 98 Z" fill="#a4ef6a"/>
@@ -1097,14 +1117,14 @@
               <g transform="translate(124 58)">
                 <path d="M72 314 H332" stroke="rgba(217,237,247,0.92)" stroke-width="5" stroke-linecap="round"/>
                 <rect x="106" y="108" width="10" height="206" rx="5" fill="#d9edf7"/>
-                <g class="windmill-blades">
+                <g class="windmill-blades showcase-left">
                   <circle cx="111" cy="108" r="9" fill="#5cc23d"/>
                   <path d="M111 28 C129 60 136 79 121 108 L111 108 Z" fill="#1b6d9e"/>
                   <path d="M177 142 C144 140 127 132 112 116 L111 108 Z" fill="#88d544"/>
                   <path d="M60 150 C76 124 89 116 111 108 L112 116 Z" fill="#4fc0d6"/>
                 </g>
                 <rect x="244" y="66" width="8" height="248" rx="4" fill="#d9edf7"/>
-                <g class="windmill-blades">
+                <g class="windmill-blades showcase-right">
                   <circle cx="248" cy="66" r="8" fill="#5cc23d"/>
                   <path d="M248 0 C263 28 268 45 256 66 L248 66 Z" fill="#4fc0d6"/>
                   <path d="M302 96 C275 95 262 88 249 74 L248 66 Z" fill="#1b6d9e"/>
@@ -1148,7 +1168,7 @@
             </g>
 
             <g class="scene-phase phase-plastic" transform="translate(314 78)">
-              <g class="plastic-rotation">
+              <g class="plastic-rotation showcase-plastic">
                 <circle cx="96" cy="124" r="90" fill="none" stroke="rgba(164,239,106,0.92)" stroke-width="12" stroke-dasharray="92 30"/>
                 <path d="M96 28 L120 44 L92 54 Z" fill="#a4ef6a"/>
                 <path d="M184 124 L156 146 L150 108 Z" fill="#a4ef6a"/>
