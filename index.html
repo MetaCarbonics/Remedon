@@ -777,91 +777,133 @@
       line-height: 1;
     }
 
-    .footer-panel {
+    .contact-panel {
       margin-top: 78px;
-      padding: 56px 0 44px;
+      padding: 68px 0 44px;
       background:
-        linear-gradient(180deg, rgba(15, 58, 99, 0.96), rgba(10, 46, 77, 0.98)),
-        radial-gradient(circle at 24% 20%, rgba(92, 194, 61, 0.16), transparent 22%);
-      color: #d8e4ef;
+        linear-gradient(180deg, rgba(235, 245, 251, 0.92), rgba(246, 251, 255, 0.98)),
+        radial-gradient(circle at 20% 18%, rgba(92, 194, 61, 0.14), transparent 20%);
     }
 
-    .footer-grid {
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.75fr 0.95fr;
+      grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
       gap: 34px;
       align-items: start;
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: #fff;
-      font-size: 2rem;
-      font-weight: 800;
+    .contact-copy {
+      padding: 24px 12px 0 0;
+    }
+
+    .contact-copy h2 {
+      color: var(--blue-900);
+      font-size: clamp(2.1rem, 4.2vw, 3.4rem);
       letter-spacing: -0.05em;
     }
 
-    .footer-brand img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      object-fit: cover;
+    .contact-copy p {
+      margin: 18px 0 0;
+      color: var(--text-700);
+      line-height: 1.76;
+      font-size: 1.04rem;
+      max-width: 32ch;
     }
 
-    .footer-title {
-      margin: 0 0 16px;
-      color: #fff;
-      font-size: 1.16rem;
-    }
-
-    .footer-copy,
-    .footer-links {
+    .contact-emails {
       display: grid;
-      gap: 12px;
+      gap: 14px;
+      margin-top: 28px;
     }
 
-    .footer-copy p,
-    .footer-links a,
-    .newsletter p,
-    .footer-note {
-      margin: 0;
-      color: #c0d0de;
-      line-height: 1.7;
+    .contact-email-card {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(20, 71, 109, 0.09);
+      box-shadow: 0 14px 32px rgba(15, 58, 99, 0.07);
     }
 
-    .newsletter-form {
-      display: flex;
-      gap: 10px;
-      margin-top: 18px;
+    .contact-email-card span {
+      display: block;
+      color: var(--green-700);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .newsletter-form input {
-      width: 100%;
-      padding: 13px 14px;
-      border: 0;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      outline: none;
-    }
-
-    .newsletter-form button {
-      padding: 13px 18px;
-      border: 0;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--green-600), var(--blue-700));
-      color: #fff;
+    .contact-email-card a {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--blue-900);
+      font-size: 1.05rem;
       font-weight: 700;
-      cursor: pointer;
+    }
+
+    .contact-form-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(20, 71, 109, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form-card h3 {
+      color: var(--blue-900);
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(20, 71, 109, 0.14);
+      background: #fff;
+      color: var(--text-900);
+      font: inherit;
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(27, 109, 158, 0.38);
+      box-shadow: 0 0 0 4px rgba(27, 109, 158, 0.08);
+    }
+
+    .contact-form button {
+      justify-self: start;
     }
 
     .footer-note {
       margin-top: 34px;
       padding-top: 22px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(20, 71, 109, 0.08);
+      color: var(--text-700);
       font-size: 0.95rem;
+      text-align: center;
     }
 
     @keyframes marquee {
@@ -936,7 +978,7 @@
     @media (max-width: 1120px) {
       .hero-grid,
       .insights-grid,
-      .footer-grid {
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -981,8 +1023,7 @@
         grid-template-columns: 1fr;
       }
 
-      .brand img,
-      .footer-brand img {
+      .brand img {
         width: 50px;
         height: 50px;
       }
@@ -1058,13 +1099,13 @@
       .pin.p7 { left: 388px; top: 148px; }
 
       .section,
-      .footer-panel {
+      .contact-panel {
         padding-top: 58px;
         padding-bottom: 40px;
       }
 
-      .newsletter-form {
-        flex-direction: column;
+      .contact-form-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1083,9 +1124,9 @@
 
         <nav class="nav-links" aria-label="Primary">
           <a href="#story">Home</a>
-          <a href="#services">Services</a>
+          <a href="#capabilities">Capabilities</a>
           <a href="#portfolio">Portfolio</a>
-          <a href="#solutions">Solutions</a>
+          <a href="#insights">News and Insights</a>
           <button
             class="nav-trigger"
             type="button"
@@ -1255,10 +1296,10 @@
       </div>
     </section>
 
-    <section class="section" id="services">
+    <section class="section" id="capabilities">
       <div class="shell">
         <div class="section-head">
-          <h2>Our Services</h2>
+          <h2>Capabilities</h2>
         </div>
 
         <div class="services-band" aria-label="Remedon services carousel">
@@ -1522,7 +1563,7 @@
       </div>
     </section>
 
-    <section class="section" id="solutions">
+    <section class="section" id="insights">
       <div class="shell insights-grid">
         <div class="insight-visual" aria-hidden="true">
           <div class="leaf-cluster">
@@ -1565,38 +1606,43 @@
       </div>
     </section>
 
-    <section class="footer-panel" id="contact">
+    <section class="contact-panel" id="contact">
       <div class="shell">
-        <div class="footer-grid">
-          <div>
-            <div class="footer-brand">
-              <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
-              <span>Remedon</span>
-            </div>
-            <div class="footer-copy" style="margin-top:18px;">
-              <p>Carbon asset development, Scope 3 carbon footprint calculation, and Plastic EPR trading support.</p>
-              <p>Project-related: <a href="mailto:projects@remedon.in">projects@remedon.in</a></p>
-              <p>General queries: <a href="mailto:info@remedon.in">info@remedon.in</a></p>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="footer-title">More</h3>
-            <div class="footer-links">
-              <a href="#story">Our Story</a>
-              <a href="#services">Services</a>
-              <a href="#portfolio">Projects</a>
-              <a href="#solutions">Solutions</a>
-              <a href="#contact">Get In Touch</a>
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <h2>Ready to talk?</h2>
+            <p>With experts across countries, we help organizations navigate climate remedies, market readiness, emissions intelligence, and circular compliance.</p>
+            <div class="contact-emails">
+              <div class="contact-email-card">
+                <span>Project Enquiries</span>
+                <a href="mailto:projects@remedon.in">projects@remedon.in</a>
+              </div>
+              <div class="contact-email-card">
+                <span>General Enquiries</span>
+                <a href="mailto:info@remedon.in">info@remedon.in</a>
+              </div>
             </div>
           </div>
 
-          <div class="newsletter">
-            <h3 class="footer-title">Newsletter</h3>
-            <p>Enter your email address below to receive updates on climate projects, Scope 3 insights, and compliance trends.</p>
-            <form class="newsletter-form">
-              <input type="email" placeholder="Your email address" aria-label="Email address">
-              <button type="submit">Subscribe</button>
+          <div class="contact-form-card">
+            <h3>Contact Us</h3>
+            <form class="contact-form">
+              <div class="contact-form-grid">
+                <input type="text" placeholder="First name" aria-label="First name">
+                <input type="text" placeholder="Last name" aria-label="Last name">
+              </div>
+              <input type="email" placeholder="Email" aria-label="Email">
+              <input type="text" placeholder="Organization" aria-label="Organization">
+              <select aria-label="Topic">
+                <option selected disabled>Select a topic</option>
+                <option>Carbon Markets &amp; Asset Development</option>
+                <option>GHG Accounting &amp; Emissions Intelligence</option>
+                <option>Circular Economy &amp; Plastic EPR Systems</option>
+                <option>Monitoring, Reporting &amp; Verification (MRV) Systems</option>
+                <option>Partnerships &amp; General Enquiries</option>
+              </select>
+              <textarea placeholder="Tell us a little about what you’re working on" aria-label="Message"></textarea>
+              <button class="btn btn-primary" type="submit">Submit</button>
             </form>
           </div>
         </div>
