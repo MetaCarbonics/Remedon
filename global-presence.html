@@ -283,106 +283,42 @@
       box-shadow: var(--shadow);
     }
 
-    .map-panel::before {
+    .map-panel::after {
       content: "";
       position: absolute;
-      inset: 0;
+      inset: auto 18px 18px 18px;
+      height: 72px;
       background:
-        radial-gradient(circle at 50% 18%, rgba(92, 194, 61, 0.08), transparent 22%),
-        linear-gradient(90deg, rgba(21, 81, 127, 0.05) 1px, transparent 1px) 0 0 / 72px 72px,
-        linear-gradient(rgba(21, 81, 127, 0.05) 1px, transparent 1px) 0 0 / 72px 72px;
+        linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.92) 70%);
       pointer-events: none;
+      z-index: 2;
     }
 
-    .map-svg {
+    .map-frame {
       position: absolute;
-      inset: 22px;
+      inset: 18px;
       width: calc(100% - 44px);
       height: calc(100% - 44px);
-    }
-
-    .continent {
-      fill: rgba(27, 109, 158, 0.12);
-      stroke: rgba(21, 81, 127, 0.18);
-      stroke-width: 2;
-    }
-
-    .map-shell {
-      fill: rgba(255, 255, 255, 0.32);
-      stroke: rgba(21, 81, 127, 0.08);
-      stroke-width: 2;
-    }
-
-    .map-grid {
-      fill: none;
-      stroke: rgba(21, 81, 127, 0.09);
-      stroke-width: 1.5;
-    }
-
-    .map-grid.bold {
-      stroke: rgba(21, 81, 127, 0.14);
-    }
-
-    .route-line {
-      fill: none;
-      stroke: rgba(61, 168, 50, 0.34);
-      stroke-width: 3;
-      stroke-dasharray: 10 10;
-    }
-
-    .marker {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
       border: 0;
-      padding: 0;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
-      box-shadow: 0 0 0 10px rgba(92, 194, 61, 0.14), 0 12px 22px rgba(15, 58, 99, 0.18);
-      transition: transform 160ms ease, box-shadow 160ms ease;
+      border-radius: 22px;
+      background: #eaf3f9;
     }
 
-    .marker::after {
-      content: "";
+    .map-badge {
       position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      border: 1px solid rgba(61, 168, 50, 0.4);
-      animation: pulse-ring 2.8s ease-out infinite;
-    }
-
-    .marker:hover,
-    .marker:focus-visible,
-    .marker.active {
-      transform: scale(1.18);
-      box-shadow: 0 0 0 14px rgba(92, 194, 61, 0.2), 0 12px 24px rgba(15, 58, 99, 0.24);
-    }
-
-    .marker-label {
-      position: absolute;
-      top: 22px;
-      left: 14px;
-      min-width: 120px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.92);
+      top: 34px;
+      left: 34px;
+      z-index: 3;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(20, 71, 109, 0.08);
       color: var(--blue-900);
       font-size: 0.82rem;
       font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       box-shadow: 0 12px 24px rgba(15, 58, 99, 0.08);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(4px);
-      transition: opacity 160ms ease, transform 160ms ease;
-    }
-
-    .marker.active .marker-label,
-    .marker:hover .marker-label,
-    .marker:focus-visible .marker-label {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .details-panel {
@@ -495,11 +431,6 @@
       text-align: center;
     }
 
-    @keyframes pulse-ring {
-      0% { opacity: 0.8; transform: scale(0.75); }
-      100% { opacity: 0; transform: scale(1.4); }
-    }
-
     @media (max-width: 1100px) {
       .hero-grid,
       .presence-grid {
@@ -539,10 +470,6 @@
 
       .map-panel {
         min-height: 520px;
-      }
-
-      .marker-label {
-        min-width: 100px;
       }
     }
   </style>
@@ -610,54 +537,15 @@
 
         <div class="presence-grid">
           <div class="map-panel">
-            <svg class="map-svg" viewBox="0 0 900 560" role="presentation" aria-hidden="true">
-              <rect class="map-shell" x="12" y="12" width="876" height="536" rx="28"/>
-              <path class="map-grid" d="M84 44 V516"/>
-              <path class="map-grid" d="M168 44 V516"/>
-              <path class="map-grid" d="M252 44 V516"/>
-              <path class="map-grid bold" d="M336 44 V516"/>
-              <path class="map-grid" d="M420 44 V516"/>
-              <path class="map-grid bold" d="M504 44 V516"/>
-              <path class="map-grid" d="M588 44 V516"/>
-              <path class="map-grid" d="M672 44 V516"/>
-              <path class="map-grid" d="M756 44 V516"/>
-              <path class="map-grid" d="M840 44 V516"/>
-              <path class="map-grid" d="M44 108 H856"/>
-              <path class="map-grid" d="M44 184 H856"/>
-              <path class="map-grid bold" d="M44 260 H856"/>
-              <path class="map-grid" d="M44 336 H856"/>
-              <path class="map-grid" d="M44 412 H856"/>
-              <path class="continent" d="M107 170 C145 124 221 104 292 121 C325 129 349 147 367 172 C350 194 327 210 288 214 C260 217 237 226 221 244 C182 234 149 220 118 198 C105 189 98 181 107 170 Z"/>
-              <path class="continent" d="M247 257 C281 256 309 272 322 300 C336 330 335 370 316 409 C302 436 286 451 261 460 C241 451 226 437 219 415 C205 372 206 324 224 291 C230 279 238 266 247 257 Z"/>
-              <path class="continent" d="M424 144 C456 133 490 133 521 146 C536 153 549 164 558 178 C551 193 539 204 518 208 C501 211 485 213 470 219 C450 213 433 205 421 191 C415 184 413 176 424 144 Z"/>
-              <path class="continent" d="M472 226 C507 211 547 212 584 228 C607 239 625 259 635 285 C624 317 604 342 571 364 C544 381 516 386 488 382 C463 353 454 321 457 289 C458 266 463 244 472 226 Z"/>
-              <path class="continent" d="M579 159 C627 133 689 126 755 137 C811 147 845 174 857 215 C844 259 814 285 768 301 C731 314 690 315 649 304 C617 296 588 279 565 252 C558 224 563 191 579 159 Z"/>
-              <path class="continent" d="M735 392 C760 383 787 386 812 398 C829 407 843 420 850 437 C838 453 820 465 796 470 C775 474 754 470 735 459 C723 439 723 416 735 392 Z"/>
-              <path class="route-line" d="M503 238 C486 221 476 204 479 186"/>
-              <path class="route-line" d="M503 238 C565 260 609 252 665 220"/>
-              <path class="route-line" d="M503 238 C552 220 571 196 567 170"/>
-              <path class="route-line" d="M503 238 C518 243 535 252 544 272"/>
-              <path class="route-line" d="M503 238 C706 251 739 222 776 194"/>
-            </svg>
-
-            <button class="marker active" data-office="corporate" style="left: 53.5%; top: 36%;">
-              <span class="marker-label">Corporate Office</span>
-            </button>
-            <button class="marker" data-office="india" style="left: 54.5%; top: 40.5%;">
-              <span class="marker-label">India Office</span>
-            </button>
-            <button class="marker" data-office="uk" style="left: 51.5%; top: 30.5%;">
-              <span class="marker-label">UK Office</span>
-            </button>
-            <button class="marker" data-office="dubai" style="left: 58%; top: 37%;">
-              <span class="marker-label">Dubai Office</span>
-            </button>
-            <button class="marker" data-office="malta" style="left: 53%; top: 34.5%;">
-              <span class="marker-label">Malta Office</span>
-            </button>
-            <button class="marker" data-office="china" style="left: 76%; top: 34%;">
-              <span class="marker-label">China Office</span>
-            </button>
+            <div class="map-badge">Google Maps View</div>
+            <iframe
+              id="office-map"
+              class="map-frame"
+              title="Remedon global office map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?hl=en&q=13%20Ring%20Road%20Lajpat%20Nagar%2004%20New%20Delhi%20110024&t=m&z=4&output=embed"
+            ></iframe>
           </div>
 
           <div class="details-panel">
@@ -740,19 +628,15 @@
       }
     };
 
-    const markers = Array.from(document.querySelectorAll(".marker"));
     const tabs = Array.from(document.querySelectorAll(".location-tab"));
     const detailTitle = document.getElementById("detail-title");
     const detailType = document.getElementById("detail-type");
     const detailAddress = document.getElementById("detail-address");
+    const officeMap = document.getElementById("office-map");
 
     const setActiveOffice = (officeKey) => {
       const office = officeData[officeKey];
       if (!office) return;
-
-      markers.forEach((marker) => {
-        marker.classList.toggle("active", marker.dataset.office === officeKey);
-      });
 
       tabs.forEach((tab) => {
         tab.classList.toggle("active", tab.dataset.office === officeKey);
@@ -761,11 +645,9 @@
       detailTitle.textContent = office.title;
       detailType.textContent = office.type;
       detailAddress.textContent = office.address;
-    };
 
-    markers.forEach((marker) => {
-      marker.addEventListener("click", () => setActiveOffice(marker.dataset.office));
-    });
+      officeMap.src = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(office.address)}&t=m&z=4&output=embed`;
+    };
 
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => setActiveOffice(tab.dataset.office));
