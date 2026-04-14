@@ -530,11 +530,41 @@
     }
 
     .why-card {
-      min-height: 200px;
+      min-height: 220px;
+      padding: 24px 24px 22px;
       border-radius: 24px;
-      border: 1.5px dashed rgba(21, 81, 127, 0.2);
-      background: rgba(255, 255, 255, 0.64);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(21, 81, 127, 0.1);
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 16px 34px rgba(15, 58, 99, 0.08);
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .why-card span {
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(92, 194, 61, 0.2), rgba(27, 109, 158, 0.16));
+      color: var(--blue-900);
+      font-size: 0.96rem;
+      font-weight: 800;
+    }
+
+    .why-card h3 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: 1.28rem;
+      letter-spacing: -0.03em;
+    }
+
+    .why-card p {
+      margin: 0;
+      color: var(--text-700);
+      line-height: 1.72;
     }
 
     .people-wrap {
@@ -1089,15 +1119,39 @@
     <section class="section why-wrap" id="why-us">
       <div class="shell">
         <div class="section-intro">
-          <h2>Why Us</h2>
+          <h2>Why Remedon</h2>
         </div>
-        <div class="why-grid" aria-label="Why Us placeholders">
-          <div class="why-card"></div>
-          <div class="why-card"></div>
-          <div class="why-card"></div>
-          <div class="why-card"></div>
-          <div class="why-card"></div>
-          <div class="why-card"></div>
+        <div class="why-grid" aria-label="Why Remedon">
+          <article class="why-card">
+            <span>1</span>
+            <h3>DMRV First Approach</h3>
+            <p>Remedon builds digital MRV systems with continuous monitoring and geospatial intelligence, helping organizations demonstrate impact with stronger continuity and proof.</p>
+          </article>
+          <article class="why-card">
+            <span>2</span>
+            <h3>Data Driven and Empirical</h3>
+            <p>Our work is shaped by structured data and real world inputs, making outputs measurable, defensible, and grounded in evidence rather than static assumptions.</p>
+          </article>
+          <article class="why-card">
+            <span>3</span>
+            <h3>Built for Future Markets</h3>
+            <p>Remedon aligns with evolving compliance frameworks, supports global mechanisms such as CORSIA, and stays adaptable as regulatory and market structures continue to develop.</p>
+          </article>
+          <article class="why-card">
+            <span>4</span>
+            <h3>Execution Led Delivery</h3>
+            <p>We work across the full project lifecycle, connecting design, compliance, monitoring, and market linkage so implementation remains as strong as the strategy behind it.</p>
+          </article>
+          <article class="why-card">
+            <span>5</span>
+            <h3>Integrated Climate Systems</h3>
+            <p>Remedon brings together carbon markets, emissions intelligence, and EPR systems in one connected structure, avoiding fragmented efforts across teams and functions.</p>
+          </article>
+          <article class="why-card">
+            <span>6</span>
+            <h3>Article 6 Readiness</h3>
+            <p>We help structure projects for international carbon cooperation under Article 6 with attention to authorization pathways, national alignment, traceability, and accounting integrity.</p>
+          </article>
         </div>
       </div>
     </section>
