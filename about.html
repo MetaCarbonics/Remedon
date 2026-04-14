@@ -439,18 +439,6 @@
       transform-origin: 248px 66px;
     }
 
-    .plastic-rotation {
-      animation: spin 7s linear infinite;
-    }
-
-    .plastic-rotation.hero-plastic {
-      transform-origin: 72px 110px;
-    }
-
-    .plastic-rotation.showcase-plastic {
-      transform-origin: 96px 124px;
-    }
-
     .forest-tree {
       transform-box: fill-box;
       transform-origin: center bottom;
@@ -950,7 +938,16 @@
             </g>
 
             <g class="scene-phase phase-plastic" transform="translate(196 118)">
-              <g class="plastic-rotation hero-plastic">
+              <g>
+                <animateTransform
+                  attributeName="transform"
+                  attributeType="XML"
+                  type="rotate"
+                  from="0 72 110"
+                  to="360 72 110"
+                  dur="7s"
+                  repeatCount="indefinite"
+                />
                 <circle cx="72" cy="110" r="62" fill="none" stroke="rgba(164,239,106,0.92)" stroke-width="10" stroke-dasharray="68 24"/>
                 <path d="M72 40 L90 52 L70 60 Z" fill="#a4ef6a"/>
                 <path d="M132 110 L112 126 L108 98 Z" fill="#a4ef6a"/>
@@ -962,6 +959,27 @@
             </g>
 
             <g class="scene-phase phase-forest" transform="translate(150 210)">
+              <g opacity="0.95">
+                <circle cx="246" cy="30" r="22" fill="#dff47a"/>
+                <g stroke="#dff47a" stroke-width="4" stroke-linecap="round">
+                  <path d="M246 0 V-18"/>
+                  <path d="M246 60 V78"/>
+                  <path d="M216 30 H198"/>
+                  <path d="M276 30 H294"/>
+                  <path d="M225 9 L212 -4"/>
+                  <path d="M267 51 L280 64"/>
+                  <path d="M267 9 L280 -4"/>
+                  <path d="M225 51 L212 64"/>
+                </g>
+              </g>
+              <g fill="#eef8ff" opacity="0.92">
+                <ellipse cx="70" cy="44" rx="28" ry="15"/>
+                <ellipse cx="95" cy="42" rx="22" ry="13"/>
+                <ellipse cx="118" cy="46" rx="20" ry="11"/>
+                <ellipse cx="228" cy="66" rx="30" ry="16"/>
+                <ellipse cx="255" cy="64" rx="24" ry="13"/>
+                <ellipse cx="279" cy="68" rx="18" ry="10"/>
+              </g>
               <path d="M44 198 H306" stroke="#d4ebf6" stroke-width="5" stroke-linecap="round"/>
               <g class="forest-tree">
                 <rect x="60" y="132" width="8" height="66" rx="4" fill="#d4ebf6"/>
@@ -1134,6 +1152,27 @@
             </g>
 
             <g class="scene-phase phase-forest" transform="translate(174 122)">
+              <g opacity="0.95">
+                <circle cx="360" cy="34" r="28" fill="#dff47a"/>
+                <g stroke="#dff47a" stroke-width="5" stroke-linecap="round">
+                  <path d="M360 -4 V-26"/>
+                  <path d="M360 72 V94"/>
+                  <path d="M322 34 H300"/>
+                  <path d="M398 34 H420"/>
+                  <path d="M334 8 L318 -8"/>
+                  <path d="M386 60 L402 76"/>
+                  <path d="M386 8 L402 -8"/>
+                  <path d="M334 60 L318 76"/>
+                </g>
+              </g>
+              <g fill="#eef8ff" opacity="0.92">
+                <ellipse cx="116" cy="56" rx="38" ry="18"/>
+                <ellipse cx="150" cy="53" rx="28" ry="15"/>
+                <ellipse cx="182" cy="58" rx="24" ry="12"/>
+                <ellipse cx="282" cy="74" rx="40" ry="19"/>
+                <ellipse cx="320" cy="70" rx="28" ry="15"/>
+                <ellipse cx="350" cy="76" rx="22" ry="11"/>
+              </g>
               <path d="M54 224 H430" stroke="#d4ebf6" stroke-width="5" stroke-linecap="round"/>
               <g class="forest-tree">
                 <rect x="84" y="152" width="10" height="72" rx="5" fill="#d4ebf6"/>
@@ -1168,7 +1207,16 @@
             </g>
 
             <g class="scene-phase phase-plastic" transform="translate(314 78)">
-              <g class="plastic-rotation showcase-plastic">
+              <g>
+                <animateTransform
+                  attributeName="transform"
+                  attributeType="XML"
+                  type="rotate"
+                  from="0 96 124"
+                  to="360 96 124"
+                  dur="7s"
+                  repeatCount="indefinite"
+                />
                 <circle cx="96" cy="124" r="90" fill="none" stroke="rgba(164,239,106,0.92)" stroke-width="12" stroke-dasharray="92 30"/>
                 <path d="M96 28 L120 44 L92 54 Z" fill="#a4ef6a"/>
                 <path d="M184 124 L156 146 L150 108 Z" fill="#a4ef6a"/>
