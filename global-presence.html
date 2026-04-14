@@ -543,7 +543,7 @@
               title="Remedon global office map"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?hl=en&q=13%20Ring%20Road%20Lajpat%20Nagar%2004%20New%20Delhi%20110024&t=m&z=4&output=embed"
+              src="https://maps.google.com/maps?hl=en&q=loc:28.5677,77.2431&z=4&t=m&output=embed"
             ></iframe>
           </div>
 
@@ -598,32 +598,38 @@
       corporate: {
         title: "Corporate Office",
         type: "Head Office",
-        address: "13- Ring Road, Lajpat Nagar -04, New Delhi -110024."
+        address: "13- Ring Road, Lajpat Nagar -04, New Delhi -110024.",
+        mapQuery: "loc:28.5677,77.2431"
       },
       india: {
         title: "India Office",
         type: "Regional Office",
-        address: "Batra Complex, Mathura Road, 17/3, Faridabad, Haryana, Pin-121017."
+        address: "Batra Complex, Mathura Road, 17/3, Faridabad, Haryana, Pin-121017.",
+        mapQuery: "loc:28.4089,77.3178"
       },
       uk: {
         title: "UK Office",
         type: "Regional Office",
-        address: "240 hydes road, West browmwich, West Midland, B71 2 ed, Birmingham, UK."
+        address: "240 hydes road, West browmwich, West Midland, B71 2 ed, Birmingham, UK.",
+        mapQuery: "loc:52.5194,-1.9952"
       },
       dubai: {
         title: "Dubai Office",
         type: "Regional Office",
-        address: "2206, Al Masraf tower, Deira, DUBAI, UAE, PIN 000000."
+        address: "2206, Al Masraf tower, Deira, DUBAI, UAE, PIN 000000.",
+        mapQuery: "loc:25.2665,55.3173"
       },
       malta: {
         title: "Malta Office",
         type: "Regional Office",
-        address: "27, Wojtyla Court, Triq il-Fossili, Birżebbuġa, BBG 1210, Malta."
+        address: "27, Wojtyla Court, Triq il-Fossili, Birżebbuġa, BBG 1210, Malta.",
+        mapQuery: "loc:35.8278,14.5275"
       },
       china: {
         title: "China Office",
         type: "Regional Office",
-        address: "Behind Amber palace, silk street, Indian Pavilion Tang west Market, Laodong South road, Xi'an, Shaanxi, China."
+        address: "Behind Amber palace, silk street, Indian Pavilion Tang west Market, Laodong South road, Xi'an, Shaanxi, China.",
+        mapQuery: "loc:34.2397,108.9203"
       }
     };
 
@@ -645,7 +651,7 @@
       detailType.textContent = office.type;
       detailAddress.textContent = office.address;
 
-      officeMap.src = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(office.address)}&t=m&z=4&output=embed`;
+      officeMap.src = `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(office.mapQuery || office.address)}&t=m&z=4&output=embed`;
     };
 
     tabs.forEach((tab) => {
