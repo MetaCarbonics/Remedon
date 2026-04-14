@@ -6,28 +6,122 @@
   <title>GHG Accounting & Emissions Intelligence | Remedon</title>
   <meta name="description" content="GHG Accounting & Emissions Intelligence services from Remedon.">
   <style>
-    :root { --blue-900:#0f3a63; --blue-800:#15517f; --blue-700:#1b6d9e; --green-700:#3da832; --green-600:#5cc23d; --text-900:#1f3b56; --text-700:#55708a; --line:rgba(20,71,109,0.12); --shadow:0 18px 50px rgba(15,58,99,0.12); --shell:1180px; }
-    * { box-sizing:border-box; } body { margin:0; font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:var(--text-900); background:radial-gradient(circle at top left, rgba(92,194,61,0.08), transparent 24%), radial-gradient(circle at top right, rgba(27,109,158,0.08), transparent 28%), linear-gradient(180deg, #fbfeff 0%, #f7fcff 55%, #ffffff 100%); }
-    a { color:inherit; text-decoration:none; } img { display:block; max-width:100%; } .shell { width:min(calc(100% - 40px), var(--shell)); margin:0 auto; }
+    :root { --blue-900:#0f3a63; --blue-800:#15517f; --blue-700:#1b6d9e; --green-700:#3da832; --green-600:#5cc23d; --green-500:#88d544; --text-900:#1f3b56; --text-700:#55708a; --line:rgba(20,71,109,0.12); --shadow:0 18px 50px rgba(15,58,99,0.12); --shell:1180px; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:var(--text-900); background:radial-gradient(circle at top left, rgba(92,194,61,0.08), transparent 24%), radial-gradient(circle at top right, rgba(27,109,158,0.08), transparent 28%), linear-gradient(180deg, #fbfeff 0%, #f7fcff 55%, #ffffff 100%); }
+    a { color:inherit; text-decoration:none; } img,svg { display:block; max-width:100%; } .shell { width:min(calc(100% - 40px), var(--shell)); margin:0 auto; }
     .topbar { position:sticky; top:0; z-index:20; background:rgba(255,255,255,0.94); backdrop-filter:blur(16px); border-bottom:1px solid rgba(20,71,109,0.08); box-shadow:0 6px 20px rgba(15,58,99,0.04); }
     .nav { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
     .brand { display:inline-flex; align-items:center; gap:14px; } .brand img { width:60px; height:60px; border-radius:50%; object-fit:cover; box-shadow:0 10px 24px rgba(21,81,127,0.14); }
     .brand-copy strong { display:block; color:var(--blue-900); font-size:1.6rem; letter-spacing:-0.04em; } .brand-copy span { display:block; color:var(--text-700); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.12em; margin-top:2px; }
     .nav-links { display:flex; align-items:center; gap:12px; color:#6a8098; font-size:0.87rem; font-weight:700; text-transform:uppercase; } .nav-links a { padding:12px 14px; border-radius:10px; } .nav-links a:hover, .nav-links a:focus-visible { color:var(--blue-900); background:rgba(20,71,109,0.06); }
     .btn { display:inline-flex; align-items:center; justify-content:center; min-width:160px; padding:14px 22px; border-radius:999px; font-weight:700; } .btn-primary { color:#fff; background:linear-gradient(135deg, var(--blue-700), var(--green-700)); box-shadow:0 14px 30px rgba(21,81,127,0.2); }
-    .hero { padding:58px 0 34px; } .hero-panel { border-radius:34px; padding:46px; background:linear-gradient(135deg, rgba(255,255,255,0.96), rgba(234,247,252,0.96)); border:1px solid rgba(20,71,109,0.08); box-shadow:var(--shadow); }
+    .hero { padding:58px 0 34px; } .hero-panel { border-radius:34px; padding:38px; background:linear-gradient(135deg, rgba(255,255,255,0.96), rgba(234,247,252,0.96)); border:1px solid rgba(20,71,109,0.08); box-shadow:var(--shadow); }
+    .hero-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,430px); gap:28px; align-items:center; }
     .eyebrow { display:inline-flex; padding:8px 14px; border-radius:999px; background:linear-gradient(90deg, rgba(92,194,61,0.14), rgba(27,109,158,0.1)); color:var(--blue-800); font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; }
-    h1,h2 { margin:0; line-height:1.06; letter-spacing:-0.05em; } h1 { margin-top:18px; font-size:clamp(2.7rem,6vw,4.5rem); color:var(--blue-900); max-width:11ch; } .hero-panel p { margin:20px 0 0; color:var(--text-700); line-height:1.75; font-size:1.05rem; max-width:760px; }
+    h1,h2 { margin:0; line-height:1.06; letter-spacing:-0.05em; } h1 { margin-top:18px; font-size:clamp(2.7rem,6vw,4.5rem); color:var(--blue-900); max-width:11ch; }
+    .hero-copy p { margin:20px 0 0; color:var(--text-700); line-height:1.75; font-size:1.05rem; max-width:52ch; }
+    .hero-visual { position:relative; aspect-ratio:1/1; border-radius:32px; overflow:hidden; background:radial-gradient(circle at 50% 18%, rgba(255,255,255,0.96), rgba(255,255,255,0) 36%), linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,248,252,0.95)); border:1px solid rgba(20,71,109,0.06); }
+    .hero-visual::before { content:""; position:absolute; inset:18px; border-radius:24px; border:1px solid rgba(20,71,109,0.04); pointer-events:none; }
+    .hero-svg { position:absolute; inset:26px; width:calc(100% - 52px); height:calc(100% - 52px); }
+    .ghg-phase { opacity:0; animation-duration:15s; animation-iteration-count:infinite; animation-timing-function:ease-in-out; }
+    .ghg-phase.scope-map { animation-name: ghgScopeMap; }
+    .ghg-phase.value-chain { animation-name: ghgValueChain; }
+    .ghg-phase.lca { animation-name: ghgLca; }
+    .ghg-phase.targets { animation-name: ghgTargets; }
+    .pulse-dot { animation:pulse 2.2s ease-in-out infinite; }
+    .pulse-dot.delay-1 { animation-delay:0.3s; } .pulse-dot.delay-2 { animation-delay:0.6s; }
+    .flow-line { stroke-dasharray:10 12; animation:dash 3.6s linear infinite; }
     .section { padding:26px 0 74px; } .content-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(300px,0.9fr); gap:28px; align-items:start; }
     .card,.deliverable-list { background:rgba(255,255,255,0.94); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); } .card { padding:30px; } .card p { margin:0; color:var(--text-700); line-height:1.8; font-size:1rem; }
     .deliverable-list { padding:26px 26px 24px; } .deliverable-list h2 { color:var(--blue-900); font-size:1.9rem; margin-bottom:18px; } .deliverable-list ul { margin:0; padding-left:20px; color:var(--text-700); line-height:1.8; } .deliverable-list li + li { margin-top:8px; }
-    @media (max-width:920px) { .nav { flex-wrap:wrap; padding:14px 0 18px; } .nav-links { width:100%; justify-content:center; flex-wrap:wrap; } .content-grid { grid-template-columns:1fr; } .hero-panel { padding:30px 24px; } }
+    @keyframes pulse { 0%,100% { transform:scale(1); opacity:0.8; } 50% { transform:scale(1.16); opacity:1; } }
+    @keyframes dash { from { stroke-dashoffset:0; } to { stroke-dashoffset:-44; } }
+    @keyframes ghgScopeMap { 0%,20% { opacity:1; } 25%,100% { opacity:0; } }
+    @keyframes ghgValueChain { 0%,22% { opacity:0; } 28%,48% { opacity:1; } 53%,100% { opacity:0; } }
+    @keyframes ghgLca { 0%,50% { opacity:0; } 56%,76% { opacity:1; } 81%,100% { opacity:0; } }
+    @keyframes ghgTargets { 0%,78% { opacity:0; } 84%,100% { opacity:1; } }
+    @media (max-width:920px) { .nav { flex-wrap:wrap; padding:14px 0 18px; } .nav-links { width:100%; justify-content:center; flex-wrap:wrap; } .hero-layout,.content-grid { grid-template-columns:1fr; } .hero-panel { padding:30px 24px; } }
   </style>
 </head>
 <body>
   <header class="topbar"><div class="shell nav"><a class="brand" href="/index.html"><img src="assets/remedon-logo.jpeg" alt="Remedon logo"><span class="brand-copy"><strong>Remedon</strong><span>Carbon Intelligence</span></span></a><nav class="nav-links" aria-label="Primary"><a href="/index.html">Home</a><a href="/index.html#services">Services</a><a href="/index.html#portfolio">Portfolio</a><a href="/index.html#solutions">Solutions</a><a href="/about.html">About Us</a></nav><a class="btn btn-primary" href="/index.html#contact">Get In Touch</a></div></header>
   <main>
-    <section class="hero"><div class="shell"><div class="hero-panel"><span class="eyebrow">Our Services</span><h1>GHG Accounting &amp; Emissions Intelligence</h1><p>Quantify and translate emissions across operations and value chains into decision-grade insights for reporting and decarbonization.</p></div></div></section>
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-panel">
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <span class="eyebrow">Our Services</span>
+              <h1>GHG Accounting &amp; Emissions Intelligence</h1>
+              <p>Quantify and translate emissions across operations and value chains into decision-grade insights for reporting and decarbonization.</p>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <svg class="hero-svg" viewBox="0 0 420 420" role="presentation">
+                <g class="ghg-phase scope-map">
+                  <rect x="74" y="64" width="272" height="232" rx="26" fill="#fff" stroke="#d7ecf6" stroke-width="3"/>
+                  <rect x="104" y="98" width="120" height="18" rx="9" fill="#dff1f8"/>
+                  <rect x="104" y="128" width="86" height="14" rx="7" fill="#d0ead5"/>
+                  <rect x="104" y="152" width="100" height="14" rx="7" fill="#dff1f8"/>
+                  <circle cx="274" cy="148" r="42" fill="#eef8fc" stroke="#d6edf6" stroke-width="2.5"/>
+                  <path d="M248 170 C260 148 274 136 298 128" fill="none" stroke="#1b6d9e" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M278 138 L298 128 L298 150" fill="none" stroke="#88d544" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle class="pulse-dot" cx="86" cy="202" r="20" fill="#fff" stroke="#cde6f1" stroke-width="2.5"/>
+                  <circle class="pulse-dot delay-1" cx="332" cy="110" r="18" fill="#fff" stroke="#cde6f1" stroke-width="2.5"/>
+                  <circle class="pulse-dot delay-2" cx="330" cy="236" r="20" fill="#fff" stroke="#cde6f1" stroke-width="2.5"/>
+                  <text x="86" y="208" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#1f3b56" text-anchor="middle">S1</text>
+                  <text x="332" y="115" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#1f3b56" text-anchor="middle">S2</text>
+                  <text x="330" y="242" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#1f3b56" text-anchor="middle">S3</text>
+                  <path class="flow-line" d="M106 202 H148 Q176 202 176 176 V164" fill="none" stroke="#1b6d9e" stroke-width="4" stroke-linecap="round"/>
+                  <path class="flow-line" d="M314 122 Q294 132 294 152" fill="none" stroke="#1b6d9e" stroke-width="4" stroke-linecap="round"/>
+                  <path class="flow-line" d="M312 228 Q294 214 292 188" fill="none" stroke="#1b6d9e" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <g class="ghg-phase value-chain">
+                  <path d="M72 280 C116 248 164 228 216 216 C258 206 300 182 344 138" fill="none" stroke="#cde5ef" stroke-width="6" stroke-linecap="round"/>
+                  <circle cx="80" cy="286" r="18" fill="#fff" stroke="#cde5ef" stroke-width="2.5"/>
+                  <rect x="65" y="273" width="30" height="18" rx="5" fill="#1b6d9e"/>
+                  <circle cx="178" cy="236" r="20" fill="#fff" stroke="#cde5ef" stroke-width="2.5"/>
+                  <path d="M164 240 L178 224 L192 240" fill="none" stroke="#88d544" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="258" cy="190" r="18" fill="#fff" stroke="#cde5ef" stroke-width="2.5"/>
+                  <rect x="244" y="180" width="28" height="20" rx="5" fill="#4fc0d6"/>
+                  <circle cx="338" cy="132" r="20" fill="#fff" stroke="#cde5ef" stroke-width="2.5"/>
+                  <path d="M326 142 C336 126 346 118 352 114" fill="none" stroke="#1b6d9e" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <g class="ghg-phase lca">
+                  <circle cx="210" cy="184" r="96" fill="#f7fcff" stroke="#d7ecf6" stroke-width="3"/>
+                  <circle cx="210" cy="184" r="62" fill="none" stroke="#d7ecf6" stroke-width="16"/>
+                  <path d="M210 88 A96 96 0 0 1 301 151" fill="none" stroke="#88d544" stroke-width="16" stroke-linecap="round"/>
+                  <path d="M302 153 L318 150 L308 167" fill="#88d544"/>
+                  <path d="M305 185 A96 96 0 0 1 243 267" fill="none" stroke="#4fc0d6" stroke-width="16" stroke-linecap="round"/>
+                  <path d="M245 279 L234 292 L232 272" fill="#4fc0d6"/>
+                  <path d="M176 268 A96 96 0 0 1 116 203" fill="none" stroke="#1b6d9e" stroke-width="16" stroke-linecap="round"/>
+                  <path d="M106 204 L94 191 L113 190" fill="#1b6d9e"/>
+                  <path d="M144 124 H196" stroke="#9fcfe1" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M144 146 H222" stroke="#d0ead5" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M144 168 H186" stroke="#9fcfe1" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <g class="ghg-phase targets">
+                  <rect x="74" y="70" width="272" height="226" rx="26" fill="#fff" stroke="#d7ecf6" stroke-width="3"/>
+                  <path d="M116 242 L152 204 L184 214 L224 174 L258 186 L308 132" fill="none" stroke="#1b6d9e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="152" cy="204" r="6" fill="#4fc0d6"/>
+                  <circle cx="184" cy="214" r="6" fill="#88d544"/>
+                  <circle cx="224" cy="174" r="6" fill="#1b6d9e"/>
+                  <circle cx="258" cy="186" r="6" fill="#4fc0d6"/>
+                  <circle cx="308" cy="132" r="6" fill="#88d544"/>
+                  <circle cx="286" cy="116" r="36" fill="#eef8fc" stroke="#d7ecf6" stroke-width="3"/>
+                  <path d="M270 118 L282 130 L304 106" fill="none" stroke="#3da832" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="112" y="102" width="82" height="16" rx="8" fill="#dff1f8"/>
+                  <rect x="112" y="128" width="58" height="12" rx="6" fill="#d0ead5"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="section"><div class="shell content-grid"><div class="card"><p>Remedon supports organizations in turning emissions data into structured intelligence for reporting, strategy, and action. The work spans direct and indirect emissions across operations and value chains, helping teams understand sources, prioritize interventions, and build a stronger foundation for disclosure and decarbonization planning.</p></div><div class="deliverable-list"><h2>What we deliver</h2><ul><li>Scope 1, 2, 3 emissions accounting</li><li>Value chain (Scope 3) mapping &amp; analysis</li><li>Lifecycle assessment (LCA)</li><li>Supplier, logistics, and downstream emissions modeling</li><li>Decarbonization pathways &amp; target setting</li></ul></div></div></section>
   </main>
 </body>
