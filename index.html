@@ -897,11 +897,68 @@
       justify-self: start;
     }
 
+    .site-footer {
+      padding: 42px 0 44px;
+      background:
+        linear-gradient(180deg, rgba(15, 58, 99, 0.96), rgba(10, 46, 77, 0.98)),
+        radial-gradient(circle at 24% 20%, rgba(92, 194, 61, 0.16), transparent 22%);
+      color: #d8e4ef;
+    }
+
+    .site-footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.8fr 0.8fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .footer-brand img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .footer-title {
+      margin: 0 0 16px;
+      color: #fff;
+      font-size: 1.16rem;
+    }
+
+    .footer-copy,
+    .footer-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-copy p,
+    .footer-links a,
+    .footer-note {
+      margin: 0;
+      color: #c0d0de;
+      line-height: 1.7;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: #ffffff;
+    }
+
     .footer-note {
       margin-top: 34px;
       padding-top: 22px;
-      border-top: 1px solid rgba(20, 71, 109, 0.08);
-      color: var(--text-700);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #c0d0de;
       font-size: 0.95rem;
       text-align: center;
     }
@@ -978,7 +1035,8 @@
     @media (max-width: 1120px) {
       .hero-grid,
       .insights-grid,
-      .contact-grid {
+      .contact-grid,
+      .site-footer-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1647,9 +1705,49 @@
           </div>
         </div>
 
-        <p class="footer-note">Copyright © 2026 Remedon. All Rights Reserved.</p>
       </div>
     </section>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <div class="site-footer-grid">
+          <div>
+            <div class="footer-brand">
+              <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
+              <span>Remedon</span>
+            </div>
+            <div class="footer-copy" style="margin-top:18px;">
+              <p>Climate remedies across carbon markets, emissions intelligence, and circular compliance systems.</p>
+              <p><a href="mailto:projects@remedon.in">projects@remedon.in</a></p>
+              <p><a href="mailto:info@remedon.in">info@remedon.in</a></p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Explore</h3>
+            <div class="footer-links">
+              <a href="#story">Home</a>
+              <a href="#capabilities">Capabilities</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#insights">News and Insights</a>
+              <a href="#contact">Contact Us</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer-title">About</h3>
+            <div class="footer-links">
+              <a href="/about.html#about-overview">About Us</a>
+              <a href="/board.html">Board</a>
+              <a href="/faq.html">FAQ</a>
+              <a href="/global-presence.html">Global Presence</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-note">Copyright © 2026 Remedon. All Rights Reserved.</p>
+      </div>
+    </footer>
   </main>
   <script>
     const aboutToggle = document.getElementById("about-toggle");
