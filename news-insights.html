@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Insights | Remedon</title>
+  <meta name="description" content="Remedon articles on climate systems, carbon markets, emissions intelligence, circular economy compliance, and digital MRV.">
+  <style>
+    :root {
+      --blue-950: #0a2b47;
+      --blue-900: #0f3a63;
+      --blue-800: #15517f;
+      --blue-700: #1b6d9e;
+      --green-700: #3da832;
+      --green-600: #5cc23d;
+      --green-500: #88d544;
+      --text-900: #1f3b56;
+      --text-700: #55708a;
+      --line: rgba(20, 71, 109, 0.12);
+      --shadow: 0 18px 50px rgba(15, 58, 99, 0.12);
+      --shell: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-900);
+      background:
+        radial-gradient(circle at top left, rgba(92, 194, 61, 0.08), transparent 24%),
+        radial-gradient(circle at top right, rgba(27, 109, 158, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, #f7fcff 54%, #ffffff 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .shell { width: min(calc(100% - 40px), var(--shell)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(20, 71, 109, 0.08);
+      box-shadow: 0 6px 20px rgba(15, 58, 99, 0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(21, 81, 127, 0.14);
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--text-700);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #6a8098;
+      font-size: 0.87rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      padding: 12px 14px;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--blue-900);
+      background: rgba(20, 71, 109, 0.06);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-700), var(--green-700));
+      box-shadow: 0 14px 30px rgba(21,81,127,0.2);
+    }
+
+    .hero {
+      padding: 68px 0 32px;
+    }
+
+    .hero-card {
+      padding: 46px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(10, 43, 71, 0.96), rgba(21, 81, 127, 0.94));
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -46px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(136, 213, 68, 0.28), transparent 70%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.06;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+    }
+
+    .hero-card p {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.76;
+      font-size: 1.04rem;
+    }
+
+    .section {
+      padding: 24px 0 84px;
+    }
+
+    .articles-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .article-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(20, 71, 109, 0.06);
+      color: var(--blue-800);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .article-card h2 {
+      color: var(--blue-900);
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .article-body {
+      margin-top: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .article-body h3 {
+      color: var(--blue-900);
+      font-size: 1.16rem;
+      letter-spacing: -0.02em;
+    }
+
+    .article-body p {
+      margin: 0;
+      color: var(--text-700);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 920px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 14px 0 18px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-card {
+        padding: 34px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="/index.html">
+        <img src="assets/remedon-logo.jpeg" alt="Remedon logo">
+        <span class="brand-copy">
+          <strong>Remedon</strong>
+          <span>Carbon Intelligence</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/index.html#capabilities">Capabilities</a>
+        <a href="/index.html#portfolio">Portfolio</a>
+        <a href="/news-insights.html">News and Insights</a>
+        <a href="/about.html">About Us</a>
+      </nav>
+
+      <a class="btn btn-primary" href="/index.html#contact">Get In Touch</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-card">
+          <span class="eyebrow">News &amp; Insights</span>
+          <h1>Ideas grounded in execution.</h1>
+          <p>Remedon’s perspective is shaped by project development, emissions intelligence, circular compliance, and monitoring systems that are built for measurable delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell articles-grid">
+        <article class="article-card" id="execution-systems">
+          <div class="article-meta">
+            <span>Remedon View</span>
+            <span>4 to 5 mins</span>
+          </div>
+          <h2>Building Climate Systems for Execution</h2>
+          <div class="article-body">
+            <p>Climate ambition is no longer the real constraint. Across industries, organizations have set targets, made net zero commitments, and begun measuring emissions. The harder challenge is translating those commitments into implementation that is consistent, measurable, and credible.</p>
+            <p>This gap often emerges because climate action is still treated as a reporting exercise rather than a systems challenge. Project development, emissions measurement, regulatory compliance, and verification are handled in separate streams, which weakens execution and slows progress.</p>
+            <h3>From strategy to systems</h3>
+            <p>Effective climate delivery depends on structure. It needs methodologies that are clearly defined, baselines that are supported by data, monitoring frameworks that can hold up under scrutiny, and outputs that align with how markets and regulators evaluate credibility.</p>
+            <p>When these elements work together as a system, climate action shifts from fragmented effort to continuous execution. Organizations can move from isolated activities to progress that is visible, trackable, and more dependable over time.</p>
+            <h3>The role of data and monitoring</h3>
+            <p>Advances in geospatial analytics, remote sensing, and structured data pipelines are changing what execution can look like. Performance can be tracked over time, risks can be identified earlier, and outputs can become more audit ready. This moves climate work beyond static reporting toward monitored delivery at scale.</p>
+          </div>
+        </article>
+
+        <article class="article-card" id="high-integrity-assets">
+          <div class="article-meta">
+            <span>Carbon Markets</span>
+            <span>4 mins</span>
+          </div>
+          <h2>The Shift Toward High Integrity Carbon Assets</h2>
+          <div class="article-body">
+            <p>Carbon markets are going through a structural transition. Earlier phases of growth were shaped by scale and accessibility. Today, the conversation is increasingly centered on integrity, transparency, and long term credibility.</p>
+            <p>That shift is being driven by stronger scrutiny from buyers, regulators, and institutional participants. Projects are being assessed less by volume alone and more by the quality of their assumptions, the strength of their methodologies, and the credibility of their monitoring frameworks.</p>
+            <h3>What integrity now means</h3>
+            <p>A high integrity carbon asset is expected to have defensible baselines, sound methodology alignment, measurable impact, and outcomes that remain sustainable over time. These are no longer seen as optional strengths. They are becoming the minimum for serious market acceptance.</p>
+            <p>As buyers become more selective, traceability and co benefits also matter more. Credits that can demonstrate clarity, credibility, and broader environmental or community value are increasingly better positioned in a maturing market.</p>
+          </div>
+        </article>
+
+        <article class="article-card" id="scope-3-priority">
+          <div class="article-meta">
+            <span>Emissions Intelligence</span>
+            <span>4 mins</span>
+          </div>
+          <h2>Why Scope 3 Is Becoming a Strategic Priority</h2>
+          <div class="article-body">
+            <p>Scope 3 emissions have moved well beyond being a disclosure challenge. For many organizations, they represent the largest share of total emissions and increasingly shape how supply chains, procurement, and risk are understood.</p>
+            <p>The complexity is significant. Scope 3 spans multiple suppliers, geographies, and data conditions, which makes simplistic estimation increasingly inadequate. Organizations are now under pressure to move toward more structured and decision useful approaches.</p>
+            <h3>From estimation to intelligence</h3>
+            <p>Supplier level mapping, category wise emissions modeling, and lifecycle based assessments make it possible to build a more reliable view of value chain impact. That turns Scope 3 from a rough reporting estimate into something that can influence procurement choices, product decisions, and decarbonization priorities.</p>
+            <p>As expectations for transparency keep rising, Scope 3 is becoming a strategic layer of business decision making rather than a side stream of ESG disclosure.</p>
+          </div>
+        </article>
+
+        <article class="article-card" id="plastic-epr-execution">
+          <div class="article-meta">
+            <span>Circular Economy</span>
+            <span>3 to 4 mins</span>
+          </div>
+          <h2>Plastic EPR From Compliance to Execution</h2>
+          <div class="article-body">
+            <p>Plastic Extended Producer Responsibility is quickly evolving from a regulatory requirement into a system level operational challenge. Compliance is no longer only about filing. It is about how obligations are executed across the value chain.</p>
+            <p>Organizations often face fragmented recovery ecosystems, inconsistent documentation, limited traceability, and inefficiencies in credit transactions. Without structure, these issues can make compliance difficult to manage and harder to defend under review.</p>
+            <h3>Why traceability matters</h3>
+            <p>Traceability is becoming central to EPR execution. Material flows need to be tracked, recovery activities need to be verifiable, and records need to be maintained in a form that is ready for audit and reporting. This is where system based implementation becomes far more effective than fragmented compliance handling.</p>
+          </div>
+        </article>
+
+        <article class="article-card" id="data-driven-monitoring">
+          <div class="article-meta">
+            <span>Digital MRV</span>
+            <span>4 mins</span>
+          </div>
+          <h2>Data Driven Monitoring in Climate Systems</h2>
+          <div class="article-body">
+            <p>Monitoring sits at the center of credible climate action. Even well designed interventions struggle to demonstrate impact if the monitoring layer is weak, inconsistent, or disconnected from reporting and verification.</p>
+            <p>Traditional approaches leaned heavily on periodic field measurements, manual reporting, and static data. Today, monitoring is becoming more continuous and data driven through satellite observation, geospatial analysis, automated data pipelines, and integrated dashboards.</p>
+            <h3>Why it changes execution</h3>
+            <p>Better monitoring improves reporting accuracy, supports earlier detection of risks, strengthens audit readiness, and creates better inputs for decision making. When monitoring is integrated with project design and compliance workflows, data becomes a working part of execution rather than an isolated output.</p>
+          </div>
+        </article>
+
+        <article class="article-card" id="methodology-selection">
+          <div class="article-meta">
+            <span>Carbon Markets</span>
+            <span>4 to 5 mins</span>
+          </div>
+          <h2>Choosing the Right Carbon Methodology Is a Strategic Decision</h2>
+          <div class="article-body">
+            <p>Selecting a carbon methodology is one of the most important decisions in project development. It shapes how impact is measured, how credits are generated, and how the project will be viewed in the market.</p>
+            <p>Methodology selection influences baselines, monitoring requirements, timelines, and commercial viability. In many cases, a single project activity may align with multiple methodological pathways, each with different assumptions and consequences.</p>
+            <h3>Why early alignment matters</h3>
+            <p>Misalignment can lead to delays in validation, lower than expected credit generation, and weaker market acceptance. A structured evaluation process that includes feasibility, risk assessment, financial logic, and long term monitoring needs helps ensure the chosen pathway is technically credible and commercially sound.</p>
+          </div>
+        </article>
+
+        <article class="article-card" id="climate-conferences">
+          <div class="article-meta">
+            <span>Policy &amp; Markets</span>
+            <span>4 mins</span>
+          </div>
+          <h2>Climate Conferences and the Direction of Global Climate Action</h2>
+          <div class="article-body">
+            <p>Global climate conferences continue to shape the direction of climate policy, finance, and market mechanisms. While their outcomes are often debated, they send important signals about how implementation frameworks, transparency requirements, and market cooperation are evolving.</p>
+            <p>These forums increasingly move beyond high level commitments toward more structured discussions on accountability, market design, and practical implementation. That shift matters for organizations that need to stay aligned with regulatory direction and emerging market expectations.</p>
+            <h3>Why organizations should pay attention</h3>
+            <p>Climate conferences are not only policy events. They are signals for future regulation, investment priorities, and market opportunity. Staying aligned with those signals helps organizations remain relevant, prepared, and better positioned for long term compliance and execution.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

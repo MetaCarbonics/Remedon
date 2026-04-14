@@ -655,126 +655,142 @@
       margin-top: 28px;
     }
 
-    .insights-grid {
+    .insights-shell {
       display: grid;
-      grid-template-columns: minmax(340px, 0.95fr) minmax(0, 1.05fr);
-      gap: 38px;
-      align-items: center;
+      gap: 24px;
     }
 
-    .insight-visual {
-      position: relative;
-      max-width: 480px;
-      margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
+    .insights-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(20, 71, 109, 0.08);
       background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.86), rgba(255,255,255,0) 28%),
-        radial-gradient(circle at center, rgba(9, 71, 56, 0.9) 0 44%, transparent 45%),
-        repeating-linear-gradient(
-          0deg,
-          rgba(61, 168, 50, 0.14) 0,
-          rgba(61, 168, 50, 0.14) 10px,
-          rgba(21, 81, 127, 0.16) 10px,
-          rgba(21, 81, 127, 0.16) 20px
-        );
-      box-shadow: inset 0 0 0 22px rgba(95, 196, 198, 0.34), 0 22px 46px rgba(15, 58, 99, 0.08);
+        radial-gradient(circle at top right, rgba(92, 194, 61, 0.12), transparent 26%),
+        linear-gradient(135deg, rgba(255,255,255,0.98), rgba(238, 248, 252, 0.96));
+      box-shadow: var(--shadow);
     }
 
-    .insight-visual::before {
-      content: "";
-      position: absolute;
-      inset: -34px;
-      background:
-        linear-gradient(90deg, rgba(21, 81, 127, 0.06) 1px, transparent 1px) 0 0 / 34px 34px,
-        linear-gradient(rgba(21, 81, 127, 0.06) 1px, transparent 1px) 0 0 / 34px 34px;
-      z-index: -1;
-    }
-
-    .leaf-cluster {
-      position: absolute;
-      inset: auto 0 18% 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .leaf-cluster span {
-      width: 68px;
-      height: 92px;
-      border-radius: 68px 0 68px 0;
-      background: linear-gradient(180deg, #7fd34d, #318d3b);
-      transform: rotate(-24deg);
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.16);
-    }
-
-    .leaf-cluster span:nth-child(2) {
-      height: 108px;
-      background: linear-gradient(180deg, #5ac349, #146f79);
-      transform: rotate(0deg);
-    }
-
-    .leaf-cluster span:nth-child(3) {
-      transform: rotate(24deg);
-      background: linear-gradient(180deg, #4fc0d6, #1d679a);
-    }
-
-    .insight-copy h2 {
+    .insights-lead h2 {
       color: var(--blue-900);
       font-size: clamp(2rem, 4.6vw, 3.5rem);
       letter-spacing: -0.05em;
     }
 
-    .insight-copy > p {
+    .insights-lead p {
       margin: 18px 0 0;
       color: var(--text-700);
       line-height: 1.78;
       font-size: 1.03rem;
+      max-width: 58ch;
     }
 
-    .insight-cards {
-      display: grid;
-      gap: 18px;
+    .insights-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .insights-meta span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(20, 71, 109, 0.06);
+      color: var(--blue-800);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .insights-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-top: 26px;
     }
 
-    .insight-card {
+    .insights-side-card {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(15, 58, 99, 0.96), rgba(19, 80, 123, 0.94));
+      color: #ffffff;
+      overflow: hidden;
       position: relative;
-      padding: 24px 88px 24px 22px;
-      border-radius: 20px;
-      border: 1px solid rgba(20, 71, 109, 0.1);
-      background: #fff;
-      box-shadow: 0 12px 32px rgba(15, 58, 99, 0.07);
     }
 
-    .insight-card h3 {
-      color: var(--blue-900);
-      font-size: 1.18rem;
-      margin-bottom: 8px;
+    .insights-side-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -28px;
+      top: -24px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(136, 213, 68, 0.22), transparent 68%);
     }
 
-    .insight-card strong {
-      display: block;
+    .insights-side-card strong {
+      position: relative;
+      z-index: 1;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .insights-side-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+    }
+
+    .insights-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .insight-story {
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(20, 71, 109, 0.08);
+      background: rgba(255,255,255,0.94);
+      box-shadow: 0 14px 34px rgba(15, 58, 99, 0.08);
+    }
+
+    .insight-story span {
       color: var(--green-700);
-      font-size: 1rem;
-      margin-bottom: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .insight-card p {
+    .insight-story h3 {
+      color: var(--blue-900);
+      font-size: 1.28rem;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+    }
+
+    .insight-story p {
       margin: 0;
       color: var(--text-700);
-      line-height: 1.6;
-      font-size: 0.96rem;
+      line-height: 1.72;
+      font-size: 0.97rem;
     }
 
-    .insight-card span {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      color: var(--green-700);
-      font-size: 2.8rem;
-      font-weight: 800;
-      line-height: 1;
+    .insight-story a {
+      color: var(--blue-800);
+      font-weight: 700;
     }
 
     .contact-panel {
@@ -1034,9 +1050,13 @@
 
     @media (max-width: 1120px) {
       .hero-grid,
-      .insights-grid,
+      .insights-feature,
       .contact-grid,
       .site-footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insights-list {
         grid-template-columns: 1fr;
       }
 
@@ -1622,44 +1642,53 @@
     </section>
 
     <section class="section" id="insights">
-      <div class="shell insights-grid">
-        <div class="insight-visual" aria-hidden="true">
-          <div class="leaf-cluster">
-            <span></span>
-            <span></span>
-            <span></span>
+      <div class="shell insights-shell">
+        <div class="insights-feature">
+          <div class="insights-lead">
+            <span class="eyebrow">News &amp; Insights</span>
+            <h2>Practical perspectives on climate systems, market integrity, and implementation.</h2>
+            <p>
+              Remedon’s insights focus on the execution layer of climate action, from carbon asset development and emissions intelligence to circular economy compliance and data driven monitoring.
+            </p>
+            <div class="insights-meta">
+              <span>Remedon View</span>
+              <span>Carbon Markets</span>
+              <span>Emissions Intelligence</span>
+              <span>Circular Economy</span>
+            </div>
+            <div class="insights-actions">
+              <a class="btn btn-primary" href="/news-insights.html">View All Articles</a>
+            </div>
+          </div>
+
+          <div class="insights-side-card">
+            <strong>Building Climate Systems for Execution</strong>
+            <p>Climate ambition is no longer the constraint. The challenge is building systems that connect project development, measurement, compliance, and verification into one credible path to delivery.</p>
+            <a class="btn btn-secondary" href="/news-insights.html#execution-systems">Read Featured Insight</a>
           </div>
         </div>
 
-        <div class="insight-copy">
-          <h2>Combating climate change with digital reporting and market readiness</h2>
-          <p>
-            Remedon brings together project structuring, emissions accounting, and circular compliance execution so teams can
-            move faster from strategy to action without fragmenting data, reporting, and commercial workflows.
-          </p>
+        <div class="insights-list">
+          <article class="insight-story">
+            <span>Carbon Markets</span>
+            <h3>The Shift Toward High Integrity Carbon Assets</h3>
+            <p>Carbon markets are moving toward stronger expectations around methodology, traceability, and long term credibility. Integrity is becoming central to project competitiveness.</p>
+            <a href="/news-insights.html#high-integrity-assets">Read article</a>
+          </article>
 
-          <div class="insight-cards">
-            <article class="insight-card">
-              <span>1</span>
-              <h3>Project readiness</h3>
-              <strong>Carbon development support</strong>
-              <p>Clarify intervention pathways, strengthen documentation, and prepare projects for credible carbon-linked value creation.</p>
-            </article>
+          <article class="insight-story">
+            <span>Emissions Intelligence</span>
+            <h3>Why Scope 3 Is Becoming a Strategic Priority</h3>
+            <p>Scope 3 is no longer just a disclosure challenge. It is becoming a core layer of supply chain visibility, risk management, and decision making.</p>
+            <a href="/news-insights.html#scope-3-priority">Read article</a>
+          </article>
 
-            <article class="insight-card">
-              <span>2</span>
-              <h3>Value-chain clarity</h3>
-              <strong>Scope 3 systems that scale</strong>
-              <p>Bring supplier and downstream emissions into one reporting view that helps prioritize action and disclosure quality.</p>
-            </article>
-
-            <article class="insight-card">
-              <span>3</span>
-              <h3>Circular compliance</h3>
-              <strong>Traceable EPR workflows</strong>
-              <p>Connect obligation planning, recovery evidence, and trading support for more reliable Plastic EPR execution.</p>
-            </article>
-          </div>
+          <article class="insight-story">
+            <span>Circular Economy</span>
+            <h3>Plastic EPR From Compliance to Execution</h3>
+            <p>Plastic EPR is evolving into an operational systems challenge where traceability, reporting, and market participation all need to work together.</p>
+            <a href="/news-insights.html#plastic-epr-execution">Read article</a>
+          </article>
         </div>
       </div>
     </section>
